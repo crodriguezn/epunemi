@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sale_Control_Model extends MY_Model 
+class Control_Venta_Model extends MY_Model 
 {
-    protected $table = 'sale_copntrol';
+    protected $table = 'control_venta';
     
     function __construct() 
     {
@@ -13,27 +13,27 @@ class Sale_Control_Model extends MY_Model
     {
         $row = parent::load($value, $by, $except_value, $except_by);
         
-        $eSaleControl = new eSaleControl();
+        $eControlVenta = new eControlVenta();
         
-        $eSaleControl->parseRow($row);
+        $eControlVenta->parseRow($row);
         
-        return $eSaleControl;
+        return $eControlVenta;
     }
     
-    function save(eSaleControl &$eSaleControl)
+    function save(eControlVenta &$eControlVenta)
     {
         try
         {
-            if (empty($eSaleControl->id)) 
+            if (empty($eControlVenta->id)) 
             {
-                $eSaleControl->id = $this->genId();
+                $eControlVenta->id = $this->genId();
                  
-                $this->insert($eSaleControl->toData());
+                $this->insert($eControlVenta->toData());
                 Helper_App_Log::write( $this->lastQuery(), FALSE, Helper_App_Log::LOG_INSERT );
             }
             else
             {
-                $this->update($eSaleControl->toData(TRUE), $eSaleControl->id);
+                $this->update($eControlVenta->toData(TRUE), $eControlVenta->id);
                 Helper_App_Log::write( $this->lastQuery(), FALSE, Helper_App_Log::LOG_UPDATE );
             }
         }
@@ -44,7 +44,7 @@ class Sale_Control_Model extends MY_Model
     }
     
     
-    function filter(filterSaleControl $filter, &$ePersons, &$SaleControls, &$count )
+    /*function filter(filterSaleControl $filter, &$ePersons, &$SaleControls, &$count )
     {
         $SaleControls = array();
         $ePersons = array();
@@ -116,17 +116,20 @@ class Sale_Control_Model extends MY_Model
         //Helper_Log::write($sql);
         return $sql;
     }
-    
+    */
     
 }
 
-class eSaleControl extends MY_Entity
+class eControlVenta extends MY_Entity
 {
-    public $id_person;
-    public $id_employee;
-    public $estado;
+    public $id_alumno;
     public $registration_date;
-    public $update_date;
+    public $estado;
+    public $id_employee;
+    public $estado_date;
+    public $id_sede;
+    public $id_curso_capacitacion;
+    public $promocion_curso;
 
     public function __construct($useDefault = TRUE)
     {
@@ -134,16 +137,19 @@ class eSaleControl extends MY_Entity
         
         if( $useDefault )
         {
-            $this->id_person            = 0;
-            $this->id_employee          = 0;
-            $this->estado               = '';
-            $this->registration_date    = '';
-            $this->update_date          = '';
+            $this->id_alumno                = 0;
+            $this->id_employee              = 0;
+            $this->id_sede                  = 0;
+            $this->id_curso_capacitacion    = 0;
+            $this->registration_date        = '';
+            $this->estado                   = '';
+            $this->estado_date              = NULL;
+            $this->promocion_curso          = NULL;
         }
     }
 }
 
-class filterSaleControl extends MY_Entity_Filter
+class filterControlVenta extends MY_Entity_Filter
 {
     public $id_employee;
     public function __construct()

@@ -51,13 +51,17 @@ class Person_Model extends MY_Model
     }
 
     
-    function existDocument($document) {
+    function existDocument($document)
+    {
         $sql = "select count(DOCUMENT) from person where DOCUMENT='$document'";
         $query = $this->db->query($sql);
         $result = $query->result();
-        if ($result[0]->count == 0) {
+        if ($result[0]->count == 0) 
+        {
             return 'success';
-        } else {
+        } 
+        else 
+        {
             return 'error';
         }
     }
@@ -72,12 +76,29 @@ class ePerson extends MY_Entity
     public $document;
     public $birthday;
     public $gender;
-    public $address;
-    public $phone_cell;
-    public $email;
     public $estado_civil;
-    public $tipo_sangre;
+    public $email;
+    public $nivel_academico;
+    public $discapacidad;
     public $id_ciudad;
+    public $calle_principal;
+    public $calle_secundaria;
+    public $referencia_domicilio;
+    public $num_casa;
+    public $telefono_casa;
+    public $telefono_trabajo;
+    public $telefono_cell_1;
+    public $telefono_cell_2;
+    public $email_trabajo;
+    public $email_alterno;
+    public $ref_1_surname_name;
+    public $ref_1_direccion;
+    public $ref_1_tlfo_fijo_cell;
+    public $ref_1_parentesco;
+    public $ref_2_surname_name;
+    public $ref_2_direccion;
+    public $ref_2_tlfo_fijo_cell;
+    public $ref_2_parentesco;
     
     public function __construct($useDefault = TRUE)
     {
@@ -85,18 +106,35 @@ class ePerson extends MY_Entity
         
         if( $useDefault )
         {
-            $this->name = '';
-            $this->surname = '';
-            $this->tipo_documento = '';
-            $this->document = '';
-            $this->birthday = NULL;
-            $this->gender = '';
-            $this->address = NULL;
-            $this->phone_cell = '';
-            $this->email = '';
-            $this->estado_civil = '';
-            $this->tipo_sangre = '';
-            $this->id_ciudad = 0;
+            $this->name                     = '';
+            $this->surname                  = '';
+            $this->tipo_documento           = '';
+            $this->document                 = '';
+            $this->birthday                 = '';
+            $this->gender                   = '';
+            $this->estado_civil             = '';
+            $this->email                    = '';
+            $this->nivel_academico          = NULL;
+            $this->discapacidad             = NULL;
+            $this->id_ciudad                = NULL;
+            $this->calle_principal          = NULL;
+            $this->calle_secundaria         = NULL;
+            $this->referencia_domicilio     = NULL;
+            $this->num_casa                 = NULL;
+            $this->telefono_casa            = NULL;
+            $this->telefono_trabajo         = NULL;
+            $this->telefono_cell_1          = NULL;
+            $this->telefono_cell_2          = NULL;
+            $this->email_trabajo            = NULL;
+            $this->email_alterno            = NULL;
+            $this->ref_1_surname_name       = NULL;
+            $this->ref_1_direccion          = NULL;
+            $this->ref_1_tlfo_fijo_cell     = NULL;
+            $this->ref_1_parentesco         = NULL;
+            $this->ref_2_surname_name       = NULL;
+            $this->ref_2_direccion          = NULL;
+            $this->ref_2_tlfo_fijo_cell     = NULL;
+            $this->ref_2_parentesco         = NULL;
         }
     }
 }

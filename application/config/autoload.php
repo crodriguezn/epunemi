@@ -123,6 +123,7 @@ $autoload['language'] = array();
 
 $autoload['model'] = array(
     // default
+    'mAlumno'                       => 'default/alumno_model',
     'mAppVersion'                   => 'default/app_version_model',
     'mCatalog'                      => 'default/catalog_model',
     'mCatalogType'                  => 'default/catalog_type_model',
@@ -130,6 +131,7 @@ $autoload['model'] = array(
     'mCompanyBranch'                => 'default/company_branch_model',
     'mCompany'                      => 'default/company_model',
     'mConfigurationSystem'          => 'default/configuration_system_model',
+    'mControlVenta'                 => 'default/control_venta_model',
     'mDepartament'                  => 'default/departament_model',
     'mEmployee'                     => 'default/employee_model',
     'mModule'                       => 'default/module_model',
@@ -141,7 +143,7 @@ $autoload['model'] = array(
     'mProvincia'                    => 'default/provincia_model',
     'mRol'                          => 'default/rol_model',
     'mRolModule'                    => 'default/rol_module_model',
-    'mSaleControl'                  => 'default/sale_control_model',
+    'mSede'                         => 'default/sede_model',
     'mSessionsActivity'             => 'default/session_activity_model',
     'mUserLog'                      => 'default/user_log_model',
     'mUser'                         => 'default/user_model',
