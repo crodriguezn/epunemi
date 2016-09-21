@@ -353,7 +353,7 @@
         <CdTb mn="1" nm="control_venta" oe="0" sch="public" zr="1"/>
         <ClPr cdCl="id_sede" prCl="id"/>
       </Fk>
-      <Idx clu="0" ftx="0" nm="control_venta_id_alumno_Idx" spa="0" unq="1">
+      <Idx clu="0" ftx="0" nm="control_venta_id_alumno_Idx" spa="0" unq="0">
         <ClNs>id_alumno</ClNs>
         <OptTx>USING btree</OptTx>
       </Idx>
@@ -418,6 +418,9 @@
       <Cl au="0" df="" nm="id_sede" nu="0">
         <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="id_profile" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
       <Fk deAc="3" nm="fk_curso_capacitacion__sede_curso_capacitacion" prLkCl="id" upAc="3">
         <PrTb mn="0" nm="curso_capacitacion" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="curso_capacitacion__sede" oe="0" sch="public" zr="1"/>
@@ -435,6 +438,10 @@
       <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_Idx" spa="0" unq="0">
         <ClNs>id</ClNs>
         <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_profile_Idx" spa="0" unq="0">
+        <ClNs>id_profile</ClNs>
+        <OptTx/>
       </Idx>
       <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_sede_Idx" spa="0" unq="0">
         <ClNs>id_sede</ClNs>
@@ -761,6 +768,12 @@
       </Cl>
       <Cl au="0" df="" nm="tipo_sangre" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_nationality" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lugar_trabajo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
       </Cl>
       <Idx clu="0" ftx="0" nm="person_document_Idx" spa="0" unq="0">
         <ClNs>document</ClNs>
@@ -1226,8 +1239,8 @@
     <TbGl bkCl="ff6666ff" sch="public" tbl="company_branch" x="301" y="305"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="company" x="295" y="195"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="module" x="683" y="265"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="permission" x="1035" y="507"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="person" x="1031" y="35"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="permission" x="1036" y="540"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="person" x="1030" y="34"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="profile" x="1414" y="556"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="session_activity" x="1792" y="237"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="user_log" x="1419" y="50"/>
@@ -1237,21 +1250,21 @@
     <TbGl bkCl="ff6666ff" sch="public" tbl="rol" x="680" y="605"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="rol_module" x="665" y="462"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="user_profile__company_branch" x="1393" y="392"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="profile_permission" x="1034" y="638"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="profile_permission" x="1039" y="663"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="user_profile" x="1842" y="386"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="pais" x="52" y="534"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="provincia" x="373" y="534"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="ciudad" x="291" y="834"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="control_venta" x="1307" y="760"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="employee" x="1645" y="760"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="departament" x="1944" y="754"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="sede" x="1955" y="871"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="control_venta" x="1306" y="777"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="employee" x="1646" y="785"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="departament" x="1944" y="774"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="sede" x="1943" y="891"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion" x="1620" y="991"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion__sede" x="1942" y="1003"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion__sede" x="1946" y="1015"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="alumno" x="992" y="780"/>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.alumno.fk_alumno_person" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1135" x2="1135" y1="465" y2="780"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1134" x2="1134" y1="490" y2="780"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.catalog.fk_catalog_catalog_type" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
@@ -1283,44 +1296,44 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.control_venta.fk_control_venta_alumno" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1256" x2="1307" y1="826" y2="826"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1256" x2="1306" y1="826" y2="826"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.control_venta.fk_control_venta_curso_capacitacion" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1620" x2="1463" y1="1031" y2="1031"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1459" x2="1459" y1="904" y2="1027"/>
+        <positionableLine lineRole="PARENT_LINE" x1="1620" x2="1462" y1="1031" y2="1031"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1458" x2="1458" y1="921" y2="1027"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.control_venta.fk_control_venta_employee" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1645" x2="1599" y1="800" y2="800"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1646" x2="1598" y1="825" y2="825"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.control_venta.fk_control_venta_sede" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1955" x2="1599" y1="887" y2="887"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1943" x2="1598" y1="913" y2="913"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_curso_capacitacion" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1847" x2="1942" y1="1042" y2="1042"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1847" x2="1946" y1="1042" y2="1042"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_sede" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="2078" x2="2078" y1="963" y2="1003"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="2066" x2="2066" y1="983" y2="1015"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.employee.fk_employee_departament" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1944" x2="1902" y1="789" y2="789"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1944" x2="1903" y1="809" y2="809"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.employee.fk_employee_person" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1324" x2="1769" y1="133" y2="133"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1773" x2="1773" y1="760" y2="137"/>
+        <positionableLine lineRole="PARENT_LINE" x1="1323" x2="1770" y1="132" y2="132"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1774" x2="1774" y1="785" y2="136"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.module.fk_module_module" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1328,8 +1341,8 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.permission.fk_permission_module" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="913" x2="1036" y1="335" y2="335"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1040" x2="1040" y1="507" y2="339"/>
+        <positionableLine lineRole="PARENT_LINE" x1="913" x2="1037" y1="335" y2="335"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1041" x2="1041" y1="540" y2="339"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.profile.fk_profile_rol" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
@@ -1339,13 +1352,13 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.profile_permission.fk_profile_permission_permission" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1187" x2="1187" y1="599" y2="638"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1188" x2="1188" y1="632" y2="663"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.profile_permission.fk_profile_permission_profile" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1414" x2="1279" y1="586" y2="586"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1275" x2="1275" y1="638" y2="590"/>
+        <positionableLine lineRole="PARENT_LINE" x1="1414" x2="1284" y1="586" y2="586"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1280" x2="1280" y1="663" y2="590"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.provincia.provincia_id_pais_fkey" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
@@ -1366,7 +1379,7 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.sede.fk_sede_departament" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="2087" x2="2087" y1="846" y2="871"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="2087" x2="2087" y1="866" y2="891"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.session_activity.fk_session_activity_user_profile" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1376,7 +1389,7 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.user.fk_user_person" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1324" x2="1418" y1="242" y2="242"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1323" x2="1418" y1="241" y2="241"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.user_log.fk_user_log_user" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1414,11 +1427,11 @@
     <Zones>
       <Zone bkCl="ffece9d8" h="534" nm="catalog" w="132" x="44" y="8"/>
       <Zone bkCl="ffece9d8" h="304" nm="company" w="315" x="285" y="167"/>
-      <Zone bkCl="ffece9d8" h="1307" nm="EPUENMI" w="389" x="958" y="726"/>
+      <Zone bkCl="ffece9d8" h="1307" nm="EPUENMI" w="389" x="959" y="740"/>
       <Zone bkCl="ffece9d8" h="572" nm="Geografica" w="511" x="46" y="505"/>
       <Zone bkCl="ffece9d8" h="298" nm="module" w="224" x="643" y="206"/>
-      <Zone bkCl="ffece9d8" h="268" nm="permission" w="141" x="1015" y="484"/>
-      <Zone bkCl="ffece9d8" h="366" nm="person" w="464" x="1008" y="6"/>
+      <Zone bkCl="ffece9d8" h="268" nm="permission" w="141" x="1017" y="505"/>
+      <Zone bkCl="ffece9d8" h="366" nm="person" w="484" x="1008" y="6"/>
       <Zone bkCl="ffece9d8" h="268" nm="profile" w="178" x="1402" y="527"/>
       <Zone bkCl="ffece9d8" h="264" nm="rol" w="125" x="664" y="568"/>
       <Zone bkCl="ffff3333" h="398" nm="system" w="187" x="1705" y="44"/>

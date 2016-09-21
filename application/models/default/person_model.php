@@ -100,6 +100,8 @@ class ePerson extends MY_Entity
     public $ref_2_tlfo_fijo_cell;
     public $ref_2_parentesco;
     public $tipo_sangre;
+    public $id_nationality;
+    public $lugar_trabajo;
     
     public function __construct($useDefault = TRUE)
     {
@@ -137,6 +139,8 @@ class ePerson extends MY_Entity
             $this->ref_2_tlfo_fijo_cell     = NULL;
             $this->ref_2_parentesco         = NULL;
             $this->tipo_sangre              = NULL;
+            $this->id_nationality           = NULL;
+            $this->lugar_trabajo            = NULL;
         }
     }
 }

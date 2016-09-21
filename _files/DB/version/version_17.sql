@@ -361,3 +361,42 @@ ALTER TABLE control_venta ADD CONSTRAINT fk_control_venta_alumno
 ALTER TABLE control_venta ADD CONSTRAINT fk_control_venta_sede
 	FOREIGN KEY (id_sede) REFERENCES sede (id)
 	ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+	
+	
+/************ Update: Tables ***************/
+
+/******************** Update Table: person ************************/
+
+/* PostgreSQL does not support adding NOT NULL columns in a single command line. */
+/************ Update: Tables ***************/
+
+/******************** Update Table: person ************************/
+
+ALTER TABLE person ADD id_nationality NUMERIC(20, 0) NULL;
+
+/************ Update: Tables ***************/
+
+/******************** Update Table: person ************************/
+
+ALTER TABLE person ADD lugar_trabajo VARCHAR(250) NULL;
+
+
+
+/************ Update: Tables ***************/
+
+/******************** Update Table: control_venta ************************/
+
+/* Remove Indexes */
+DROP INDEX "control_venta_id_alumno_Idx";
+
+/* Add Indexes */
+CREATE INDEX "control_venta_id_alumno_Idx" ON control_venta USING btree (id_alumno);
+
+
+/******************** Update Table: curso_capacitacion__sede ************************/
+
+ALTER TABLE curso_capacitacion__sede ADD id_profile NUMERIC(20, 0) NULL;
+
+/* Add Indexes */
+CREATE INDEX "curso_capacitacion__sede_id_profile_Idx" ON curso_capacitacion__sede (id_profile);

@@ -43,6 +43,41 @@ class Curso_Capacitacion__Sede_model extends MY_Model
         }
     }
     
+    function listAllCursoCapacitacion($id_sede=NULL)
+    {
+        $query = $this->db->query( $this->queryAll($id_sede) );
+
+        $rows = $query->result_array();
+        
+        $ePaises = array();
+        if( !empty($rows) )
+        {
+            foreach( $rows as $row )
+            {
+                $ePais = new ePais();
+                $ePais->parseRow($row);
+                
+                $ePaises[] = $ePais;
+            }
+        }
+            
+        return $ePaises;
+    }
+    
+    function queryAllCursoCapacitacion( )
+    {
+        $sql = "
+            SELECT *
+            FROM ".( $this->table )."
+            WHERE 1=1
+                AND (
+                    nombre LIKE '%".( $this->db->escape_like_str($txt_filter) )."%'
+                )
+            ".( is_null($limit) || is_null($offset) ? '' : " LIMIT $limit OFFSET $offset " )."
+        ";
+
+        return $sql;
+    }
     
     /*function filter(filterEmployee $filter, &$eEmployees, &$ePersons, &$eDepartaments, &$count )
     {
@@ -129,6 +164,7 @@ class eCursoCapacitacionSede extends MY_Entity
 {
     public $id_curso_capacitacion;
     public $id_sede;
+    public $id_profile;
 
     public function __construct($useDefault = TRUE)
     {
@@ -138,15 +174,19 @@ class eCursoCapacitacionSede extends MY_Entity
         {
             $this->id_curso_capacitacion    = 0;
             $this->id_sede                  = 0;
+            $this->id_profile               = 0;
         }
     }
 }
 
 class filterCursoCapacitacionSede extends MY_Entity_Filter
 {
+    public $id_profile;
+    
     public function __construct()
     {
         parent::__construct();
+        $this->id_profile   = NULL;
     }
     
 }

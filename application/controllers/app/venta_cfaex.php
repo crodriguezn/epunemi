@@ -49,6 +49,23 @@ class Venta_CfaeX extends MY_Controller
             case 'list-venta-cfae':
                 $this->listVentaCFAE();
                 break;
+            case 'load-components':
+                $this->loadComponents();
+                break;
+            case 'load-curso-capacitacion':
+                $this->loadCursoCapacitacion();
+                break;
+            case 'load-pais':
+                $this->loadPais();
+                break;
+            case 'load-provincia':
+                $this->loadProvincia();
+                break;
+            case 'load-ciudad':
+                $this->loadCiudad();
+                break;
+            case 'load-person-by-document':
+                $this->loadPersonByDocument();
             default:
                 $this->noaction($action);
                 break;
@@ -106,4 +123,175 @@ class Venta_CfaeX extends MY_Controller
         echo $resAjax->toJsonEncode();
     }     
     
+    private function loadComponents ()
+    {
+        $resAjax = new Response_Ajax();
+        
+        $arrType = array('TIPO_IDENT','ESTADO_CIVIL','GENDER', 'TIPO_DE_SANGRE','DISCAPACIDAD','NIVEL_ACADEMICO');
+        
+        try
+        {
+            $oBus = Business_App_Catalog::listByType($arrType);
+            if( !$oBus->isSuccess() )
+            {
+                throw new Exception( $oBus->message() );
+            }
+            
+            $dataCatalogo = $oBus->data();
+            $eCatalogs = $dataCatalogo['eCatalogs'];
+            
+            $oBus1 = Business_App_Curso_Capacitacion_Sede::listSede('', NULL, NULL);
+            
+            $dataSede = $oBus1->data();
+            $eSedes = $dataSede['eSedes'];
+            
+            $resAjax->isSuccess(TRUE);
+        }
+        catch( Exception $e )
+        {
+           $resAjax->isSuccess(FALSE); 
+           $resAjax->message( $e->getMessage() );
+        }
+        
+        $resAjax->data(array('eCatalogs'=>$eCatalogs, 'eSedes'=>$eSedes));
+        
+        echo $resAjax->toJsonEncode();
+    }
+    
+    private function loadPais()
+    {
+        $resAjax = new Response_Ajax();
+        try
+        {
+            $oBus = Business_App_Pais::listPais($ePaises/*REF*/);
+            if( !$oBus->isSuccess() )
+            {
+                throw new Exception( $oBus->message() );
+            }
+            
+            $combo_pais = Helper_Array::entitiesToIdText($ePaises, 'id', 'nombre', 'value', 'text');
+            
+            $resAjax->isSuccess(TRUE);
+        }
+        catch( Exception $e )
+        {
+           $resAjax->isSuccess(FALSE); 
+           $resAjax->message( $e->getMessage() );
+        }
+        
+        $resAjax->data(
+                array(
+                        'cbo-pais' => $combo_pais
+                    )
+                );
+        
+        echo $resAjax->toJsonEncode();
+    }
+    
+    private function loadProvincia()
+    {
+        $resAjax = new Response_Ajax();
+        
+        $id_pais = $this->input->post('id_pais');
+        
+        try
+        {
+            $oBus = Business_App_Provincia::listProvincia($id_pais, $eProvincias/*REF*/);
+            if( !$oBus->isSuccess() )
+            {
+                throw new Exception( $oBus->message() );
+            }
+            
+            $combo_provincia = Helper_Array::entitiesToIdText($eProvincias, 'id', 'nombre', 'value', 'text');
+            
+            $resAjax->isSuccess(TRUE);
+        }
+        catch( Exception $e )
+        {
+           $resAjax->isSuccess(FALSE); 
+           $resAjax->message( $e->getMessage() );
+        }
+        
+        $resAjax->data(
+                array(
+                        'cbo-provincia' => $combo_provincia
+                    )
+                );
+        
+        echo $resAjax->toJsonEncode();
+    }
+    
+    private function loadCiudad()
+    {
+        $resAjax = new Response_Ajax();
+        
+        $id_provincia = $this->input->post('id_provincia');
+        
+        try
+        {
+            $oBus = Business_App_Ciudad::listCiudad($id_provincia, $eCiudades/*REF*/);
+            if( !$oBus->isSuccess() )
+            {
+                throw new Exception( $oBus->message() );
+            }
+            
+            $combo_ciudad = Helper_Array::entitiesToIdText($eCiudades, 'id', 'nombre', 'value', 'text');
+            
+            $resAjax->isSuccess(TRUE);
+        }
+        catch( Exception $e )
+        {
+           $resAjax->isSuccess(FALSE); 
+           $resAjax->message( $e->getMessage() );
+        }
+        
+        $resAjax->data(
+                array(
+                        'cbo-ciudad' => $combo_ciudad
+                    )
+                );
+        
+        echo $resAjax->toJsonEncode();
+    }
+    
+    private function loadPersonByDocument()
+    {
+        $this->load->file('application/modules/app/venta_cfae/form/venta_cfae_form.php');
+        
+        $frm_data = new Form_App_Venta_Cfae();
+        
+        $resAjax = new Response_Ajax();
+        
+        $document = $this->input->post('document');
+        try 
+        {
+            
+            //PERSON
+            $oBusPerson = Business_App_Person::loadByDocument($document);
+
+            if(!$oBusPerson->isSuccess())
+            {
+                throw new Exception($oBusPerson->message());
+            }
+            
+            $dataPerson = $oBusPerson->data();
+
+            /* @var $ePerson ePerson  */
+            $ePerson   = $dataPerson['ePerson'];
+            
+            $frm_data->setPersonEntity($ePerson);
+            
+            
+            $resAjax->isSuccess( TRUE );
+        }
+        catch (Exception $exc)
+        {
+            $resAjax->isSuccess( FALSE );
+            $resAjax->message( $exc->getMessage() );
+        }
+        
+        $resAjax->form('person', $frm_data->toArray());
+        
+        echo $resAjax->toJsonEncode();
+    }
 }

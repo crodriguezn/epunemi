@@ -48,36 +48,44 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class="icon-file6"></i><span></span> Cuenta</h4>
+                <h4 class="modal-title"><i class="icon-file6"></i><span></span> Venta</h4>
             </div>
             <form action="javascript:;" role="form">
-                <input type="hidden" name="id_user" value="0" />
-                <input type="hidden" name="id_person" value="0" />
+                <input type="hidden" name="id_venta_cfae" value="0" />
                 <div class="modal-body with-padding">
                     <div class="well block">
                         <div class="tabbable">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tabDatos" data-toggle="tab">Persona</a></li>
-                                <li><a href="#tabCuenta" data-toggle="tab">Usuario</a></li>
+                                <li class="active"><a href="#tabPersonal" data-toggle="tab">Personal</a></li>
+                                <li><a href="#tabDireccion" data-toggle="tab">Dirección</a></li>
+                                <li><a href="#tabReferencia" data-toggle="tab">Referencias</a></li>
                             </ul>
                             <div class="tab-content with-padding">
-                                <div class="tab-pane fade in active" id="tabDatos">
+                                <div class="tab-pane fade in active" id="tabPersonal">
                                     <!-- Vertical form outside panel -->
                                     <div class="block">
-                                        <h6 class="heading-hr"><i class="icon-profile"></i> Información Personal</h6>
+                                        <h6 class="heading-hr"><i class="icon-user"></i> Información Personal</h6>
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label>Tipo de identificación:</label>
+                                                    <label><i class="icon-spell-check"></i> Tipo de identificación:</label>
                                                     <span class="el-finding el-fin-tipo-documeno text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
                                                     <select class="select-full select-search" name="tipo_documento"></select>
                                                     <span class="label label-danger label-block">Left aligned label</span> 
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label><i class="icon-spell-check"></i> Número de Identificación: <span class="el-finding-document" style="color: rgb(253, 123, 18);">Buscando...</span></label>
                                                     <input type="text" class="form-control" name="document">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Nacionalidad:</label>
+                                                    <span class="el-finding el-fin-tipo-documeno text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
+                                                    <select class="select-full select-search" name="id_nationality"></select>
                                                     <span class="label label-danger label-block">Left aligned label</span> 
                                                 </div>
                                             </div>
@@ -117,7 +125,7 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label>Estado Civil:</label>
+                                                    <label><i class="icon-spell-check"></i> Estado Civil:</label>
                                                     <span class="el-finding el-fin-estado-civil text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
                                                     <select class="select-full select-search" name="estado_civil"></select>
                                                     <span class="label label-danger label-block">Left aligned label</span> 
@@ -127,7 +135,7 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label>Tipo de Sangre:</label>
+                                                    <label><i class="icon-spell-check"></i> Tipo de Sangre:</label>
                                                     <span class="el-finding el-fin-tipo-sangre text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
                                                     <select class="select-full select-search" name="tipo_sangre"></select>
                                                     <span class="label label-danger label-block">Left aligned label</span> 
@@ -135,8 +143,9 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label><i class=""></i> Télefonos:</label>
-                                                    <input type="text" class="form-control" name="phone_cell">
+                                                    <label><i class="icon-spell-check"></i> Discapacidad:</label>
+                                                    <span class="el-finding el-fin-discapacidad text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
+                                                    <select class="select-full select-search" name="discapacidad"></select>
                                                     <span class="label label-danger label-block">Left aligned label</span> 
                                                 </div>
                                             </div>
@@ -148,7 +157,39 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h6 class="heading-hr"><i class="icon-location2"></i> Información de Residencia</h6>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Nivel Académico:</label>
+                                                    <span class="el-finding el-fin-nivel-academico text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
+                                                    <select class="select-full select-search" name="nivel_academico"></select>
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Sede:</label>
+                                                    <span class="el-finding el-fin-sede text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
+                                                    <select class="select-full select-search" name="id_sede"></select>
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Curso de Capacitación:</label>
+                                                    <span class="el-finding el-fin-curso-capacitacion text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
+                                                    <select class="select-full select-search" name="id_curso_capacitacion"></select>
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /vertical form outside panel -->
+                                </div>
+                                <div class="tab-pane fade" id="tabDireccion">
+                                    <!-- Vertical form outside panel -->
+                                    <div class="block">
+                                        <h6 class="heading-hr"><i class="icon-location2"></i> Dirección Permanente</h6>
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <div class="form-group">
@@ -176,74 +217,165 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Dirección:</label>
-                                                    <input type="text" class="form-control" name="address">
+                                                    <label><i class="icon-spell-check"></i> Calle Principal:</label>
+                                                    <input type="text" class="form-control" name="calle_principal">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Calle Secundaria:</label>
+                                                    <input type="text" class="form-control" name="calle_secundaria">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Referencia:</label>
+                                                    <input type="text" class="form-control" name="referencia_domicilio">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Número de Casa:</label>
+                                                    <input type="text" class="form-control" name="num_casa">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Telefono de Casa:</label>
+                                                    <input type="text" class="form-control" name="telefono_casa">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Lugar de Trabajo:</label>
+                                                    <input type="text" class="form-control" name="lugar_trabajo">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Telefono del Trabajo:</label>
+                                                    <input type="text" class="form-control" name="telefono_trabajo">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class=""></i> Correo Electrónico Trabajo:</label>
+                                                    <input type="text" class="form-control" name="email_trabajo">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class=""></i> Correo Electrónico Alterno:</label>
+                                                    <input type="text" class="form-control" name="email_alterno">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Teléfono Celular  No.1:</label>
+                                                    <input type="text" class="form-control" name="telefono_cell_1">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Teléfono Celular  No.2:</label>
+                                                    <input type="text" class="form-control" name="telefono_cell_2">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /vertical form outside panel -->
+                                </div>
+                                <div class="tab-pane fade" id="tabReferencia">
+                                    <!-- Vertical form outside panel -->
+                                    <div class="block">
+                                        <h6 class="heading-hr"><i class="icon-user"></i> Referencia Personal No. 1</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Apellidos y Nombres: <span class="el-finding-document" style="color: rgb(253, 123, 18);">Buscando...</span></label>
+                                                    <input type="text" class="form-control" name="ref_1_surname_name">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Dirección de Domicilio:</label>
+                                                    <input type="text" class="form-control" name="ref_1_direccion">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Teléfono Fijo o Celular: <span class="el-finding-document" style="color: rgb(253, 123, 18);">Buscando...</span></label>
+                                                    <input type="text" class="form-control" name="ref_1_tlfo_fijo_cell">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Parentesco:</label>
+                                                    <input type="text" class="form-control" name="ref_1_parentesco">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="heading-hr"><i class="icon-user"></i> Referencia Personal No. 2</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Apellidos y Nombres: <span class="el-finding-document" style="color: rgb(253, 123, 18);">Buscando...</span></label>
+                                                    <input type="text" class="form-control" name="ref_2_surname_name">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Dirección de Domicilio:</label>
+                                                    <input type="text" class="form-control" name="ref_2_direccion">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Teléfono Fijo o Celular: <span class="el-finding-document" style="color: rgb(253, 123, 18);">Buscando...</span></label>
+                                                    <input type="text" class="form-control" name="ref_2_tlfo_fijo_cell">
+                                                    <span class="label label-danger label-block">Left aligned label</span> 
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label><i class="icon-spell-check"></i> Parentesco:</label>
+                                                    <input type="text" class="form-control" name="ref_2_parentesco">
                                                     <span class="label label-danger label-block">Left aligned label</span> 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /vertical form outside panel -->
-                                </div>
-                                <div class="tab-pane fade" id="tabCuenta">
-                                    <h6 class="heading-hr"><i class="icon-user4"></i> Información del Perfil:</h6>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group has-feedback">
-                                                <label>Perfil: </label>
-                                                <span class="el-finding el-fin-perfil text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
-                                                <select class="select-full select-search" name="id_profile"></select>
-                                                <span class="label label-block label-danger text-left">Centered label</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group has-feedback">
-                                                <label><i class="icon-spell-check"></i> Sedes: </label>
-                                                <span class="el-finding el-fin-company-branchs text-success" style="text-align:left;" ><img src="resources/img/loading.gif" /> <span class="text">Cargando...</span></span>
-                                                <select name="id_company_branchs" data-placeholder="Buscar Sedes" class="select-multiple" multiple="multiple" tabindex="2">                                   
-                                                </select>
-                                                <span class="label label-block label-danger text-left">Centered label</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group has-feedback">
-                                                <label class="checkbox-inline checkbox-success">
-                                                    ¿Esta Activo?
-                                                    <input type="checkbox" class="form-control styled" name="isActive">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h6 class="heading-hr"><i class="icon-lock"></i> Información de Seguridad:</h6>
-                                    <div class="form-group msg-clave">                                            
-                                        <span class=" label label-block label-info text-left"></span>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group has-feedback">
-                                                <label><i class="icon-spell-check"></i> Nombre Usuario: </label>
-                                                <input type="text" placeholder="username" class="form-control" name="username">
-                                                <span class="label label-block label-danger text-left">Centered label</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group has-feedback">
-                                                <label>Contraseña: </label>
-                                                <input type="password" placeholder="Ingrese Nueva Clave" class="form-control" name="password_new">
-                                                <span class="label label-block label-danger text-left">Centered label</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group has-feedback">
-                                                <label>Verificar Contraseña:</label>
-                                                <input type="password" placeholder="Repita Nueva Clave" class="form-control" name="password_new_repeat">
-                                                <span class="label label-block label-danger text-left">Centered label</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

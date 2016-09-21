@@ -46,13 +46,13 @@ var ControlVentaCFAE_Controller = {
 
                     var html = ControlVentaCFAE_View.dtOptionsTable();
                     var $html = $(html);
-                    
+
                     $('.dt-action-view', $html).click(function () {
-                        Modal_UserAcount.open(data, true);
+                        Modal_VentaCFAE.open(data, true);
                     });
 
                     $('.dt-action-edit', $html).click(function () {
-                        Modal_UserAcount.open(data);
+                        Modal_VentaCFAE.open(data);
                     });
 
                     $(this).after($html);
@@ -63,11 +63,11 @@ var ControlVentaCFAE_Controller = {
 
         if (ControlVentaCFAE_Base.permissions.create) {
             $('.action-popup-new').click(function () {
-                Modal_UserAcount.open();
+                Modal_VentaCFAE.open();
             });
         }
 
-        Modal_UserAcount.init();
+        Modal_VentaCFAE.init();
     },
     refresDataTable: function (isDraw /*=true*/)
     {
@@ -78,7 +78,7 @@ var ControlVentaCFAE_Controller = {
 
 };
 
-var Modal_UserAcount = {
+var Modal_VentaCFAE = {
     init: function ()
     {
         var self = this;
@@ -138,9 +138,8 @@ var Modal_UserAcount = {
 
         self.formReadOnly(true);
         self.formLoading('load');
-        self.smgKey('load');
         self.errorClear();
-        UserSettings_Model.loadPersonByDocument(document, function (oRes)
+        ControlVentaCFAE_Model.loadPersonByDocument(document, function (oRes)
         {
             $('.el-finding-document', self.$modal).hide();
 
@@ -155,14 +154,6 @@ var Modal_UserAcount = {
             {
                 self.formReadOnly(false);
                 self.formLoading('none');
-                if ($('[name="id_user"]', self.$modal) == 0)
-                {
-                    self.smgKey('new');
-                }
-                else
-                {
-                    self.smgKey('edit');
-                }
             };
 
             self.loadProvincia(function () {
@@ -184,7 +175,6 @@ var Modal_UserAcount = {
     formReset: function ()
     {
         var self = this;
-        ControlVentaCFAE_Base.data_company_branch = [];
         self.dataDefault();
         self.errorClear();
         self.formReadOnly(false);
@@ -193,41 +183,16 @@ var Modal_UserAcount = {
     },
     dataDefault: function ()
     {
-        this.data(ControlVentaCFAE_Base.user_settings_form_default);
+        this.data(ControlVentaCFAE_Base.cfae_form_default);
     },
     errorClear: function ()
     {
-        this.formError(ControlVentaCFAE_Base.user_settings_form_default);
-    },
-    smgKey: function (type /* new, edit, view, load */)
-    {
-        var self = this;
-        if (type == 'new')
-        {
-            $('.msg-clave span', self.$modal).show();
-            $('.msg-clave span', self.$modal).html('Por favor, vuelva a repetir la contraseña para poder verificar');
-        }
-        else if (type == 'edit')
-        {
-            $('.msg-clave span', self.$modal).show();
-            $('.msg-clave span', self.$modal).html('Por favor, solo si desea actualizar su contraseña debe ingresarla...');
-        }
-        else if (type == 'view')
-        {
-            $('.msg-clave span', self.$modal).hide();
-            $('.msg-clave span', self.$modal).html('');
-        }
-        else if (type == 'load')
-        {
-            $('.msg-clave span', self.$modal).show();
-            $('.msg-clave span', self.$modal).html('Verificando acción de contraseña');
-        }
+        this.formError(ControlVentaCFAE_Base.cfae_form_default);
     },
     formType: function (type /* new, edit, view */)
     {
         var self = this;
 
-        self.smgKey(type);
 
         if (type == 'new')
         {
@@ -270,28 +235,43 @@ var Modal_UserAcount = {
         var self = this;
 
         var self = this;
+        
+        $('[name="tipo_documento"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="document"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="id_nationality"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="name"]', self.$modal).prop('readonly', isFormReadOnly);
         $('[name="surname"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="document"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="birthday"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="address"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="phone_cell"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="email"]', self.$modal).prop('readonly', isFormReadOnly);
-
-        $('[name="tipo_documento"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="gender"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="birthday"]', self.$modal).prop('readonly', isFormReadOnly);
         $('[name="estado_civil"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="tipo_sangre"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="discapacidad"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="email"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="nivel_academico"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="id_sede"]', self.$modal).select2('enable', !isFormReadOnly);
+        $('[name="id_curso_capacitacion"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="id_pais"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="id_provincia"]', self.$modal).select2('enable', !isFormReadOnly);
         $('[name="id_ciudad"]', self.$modal).select2('enable', !isFormReadOnly);
-
-        $('[name="id_profile"]', self.$modal).select2('enable', !isFormReadOnly);
-        $('[name="username"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="password_new"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="password_new_repeat"]', self.$modal).prop('readonly', isFormReadOnly);
-        $('[name="isActive"]', self.$modal).prop('disabled', isFormReadOnly);
-        $('[name="id_company_branchs"]', self.$modal).select2('readonly', isFormReadOnly);
+        $('[name="calle_principal"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="calle_secundaria"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="referencia_domicilio"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="num_casa"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="telefono_casa"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="lugar_trabajo"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="telefono_trabajo"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="email_trabajo"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="email_alterno"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="telefono_cell_1"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="telefono_cell_2"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_1_surname_name"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_1_direccion"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_1_tlfo_fijo_cell"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_1_parentesco"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_2_surname_name"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_2_direccion"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_2_tlfo_fijo_cell"]', self.$modal).prop('readonly', isFormReadOnly);
+        $('[name="ref_2_parentesco"]', self.$modal).prop('readonly', isFormReadOnly);
 
         $.uniform.update();
     },
@@ -395,7 +375,7 @@ var Modal_UserAcount = {
     dataLoad: function (id_user)
     {
         var self = this;
-        UserSettings_Model.loadAcount(id_user, function (res) {
+        ControlVentaCFAE_Model.loadAcount(id_user, function (res) {
             if (!res.isSuccess)
             {
                 Core.Notification.error(res.message);
@@ -414,30 +394,43 @@ var Modal_UserAcount = {
         if (data)
         {
             var id_person = data.id_person.value;
-            var name = data.name.value;
-            var surname = data.surname.value;
             var tipo_documento = data.tipo_documento.value;
             var document = data.document.value;
-            var birthday = data.birthday.value;
+            var id_nationality = data.id_nationality.value;
+            var name = data.name.value;
+            var surname = data.surname.value;
             var gender = data.gender.value;
-            var address = data.address.value;
-            var phone_cell = data.phone_cell.value;
-            var email = data.email.value;
+            var birthday = data.birthday.value;
             var estado_civil = data.estado_civil.value;
             var tipo_sangre = data.tipo_sangre.value;
+            var discapacidad = data.discapacidad.value;
+            var email = data.email.value;
+            var nivel_academico = data.nivel_academico.value;
+            var id_sede = data.id_sede.value;
+            var id_curso_capacitacion = data.id_curso_capacitacion.value;
             var id_pais = data.id_pais.value;
             var id_provincia = data.id_provincia.value;
             var id_ciudad = data.id_ciudad.value;
-
-            var id_profile = data.id_profile.value;
-            var id_user = data.id_user.value;
-            var username = data.username.value;
-            var password_new = data.password_new.value;
-            var password_new_repeat = data.password_new_repeat.value;
-            var isActive = (data.isActive.value == 0) ? false : true;
-
-            var id_company_branchs = (data.id_company_branchs.value == null) ? [] : data.id_company_branchs.value;
-
+            var calle_principal = data.calle_principal.value;
+            var calle_secundaria = data.calle_secundaria.value;
+            var referencia_domicilio = data.referencia_domicilio.value;
+            var num_casa = data.num_casa.value;
+            var telefono_casa = data.telefono_casa.value;
+            var lugar_trabajo = data.lugar_trabajo.value;
+            var telefono_trabajo = data.telefono_trabajo.value;
+            var email_trabajo = data.email_trabajo.value;
+            var email_alterno = data.email_alterno.value;
+            var telefono_cell_1 = data.telefono_cell_1.value;
+            var telefono_cell_2 = data.telefono_cell_2.value;
+            var ref_1_surname_name = data.telefono_cell_2.value;
+            var ref_1_direccion = data.telefono_cell_2.value;
+            var ref_1_tlfo_fijo_cell = data.telefono_cell_2.value;
+            var ref_1_parentesco = data.telefono_cell_2.value;
+            var ref_2_surname_name = data.telefono_cell_2.value;
+            var ref_2_direccion = data.telefono_cell_2.value;
+            var ref_2_tlfo_fijo_cell = data.telefono_cell_2.value;
+            var ref_2_parentesco = data.telefono_cell_2.value;
+            
             $('[name="id_person"]', self.$modal).val(id_person);
             $('[name="name"]', self.$modal).val(name);
             $('[name="surname"]', self.$modal).val(surname);
@@ -448,6 +441,9 @@ var Modal_UserAcount = {
                 $('[name="estado_civil"]', self.$modal).select2('val', estado_civil);
                 $('[name="tipo_sangre"]', self.$modal).select2('val', tipo_sangre);
                 $('[name="id_pais"]', self.$modal).select2('val', id_pais);
+                $('[name="id_nationality"]', self.$modal).select2('val', id_nationality);
+                $('[name="discapacidad"]', self.$modal).select2('val', discapacidad);
+                $('[name="nivel_academico"]', self.$modal).select2('val', nivel_academico);
             }
             else
             {
@@ -457,29 +453,43 @@ var Modal_UserAcount = {
                 $('[name="estado_civil"]', self.$modal).attr('_value', estado_civil);
                 $('[name="tipo_sangre"]', self.$modal).attr('_value', tipo_sangre);
                 $('[name="id_pais"]', self.$modal).attr('_value', id_pais);
+                $('[name="id_nationality"]', self.$modal).attr('_value', id_nationality);
+                $('[name="discapacidad"]', self.$modal).attr('_value', discapacidad);
+                $('[name="nivel_academico"]', self.$modal).attr('_value', nivel_academico);
             }
 
-
             $('[name="birthday"]', self.$modal).val(birthday);
-            $('[name="address"]', self.$modal).val(address);
-            $('[name="phone_cell"]', self.$modal).val(phone_cell);
             $('[name="email"]', self.$modal).val(email);
             $('[name="id_provincia"]', self.$modal).attr('_value', id_provincia);
             $('[name="id_ciudad"]', self.$modal).attr('_value', id_ciudad);
-            $('[name="id_user"]', self.$modal).val(id_user);
-            $('[name="username"]', self.$modal).val(username);
-            $('[name="password_new"]', self.$modal).val(password_new);
-            $('[name="password_new_repeat"]', self.$modal).val(password_new_repeat);
-            $('[name="id_profile"]', self.$modal).attr('_value', id_profile);
-            $('[name="isActive"]', self.$modal).prop('checked', isActive);
-            $('[name="id_company_branchs"]', self.$modal).attr('_value', id_company_branchs);
-            ControlVentaCFAE_Base.data_company_branch = id_company_branchs;
-
+            $('[name="id_sede"]', self.$modal).select2('val', id_sede);
+            $('[name="id_curso_capacitacion"]', self.$modal).select2('val', id_curso_capacitacion);
+            $('[name="calle_principal"]', self.$modal).val(calle_principal);
+            $('[name="calle_secundaria"]', self.$modal).val(calle_secundaria);
+            $('[name="referencia_domicilio"]', self.$modal).val(referencia_domicilio);
+            $('[name="num_casa"]', self.$modal).val(num_casa);
+            $('[name="telefono_casa"]', self.$modal).val(telefono_casa);
+            $('[name="lugar_trabajo"]', self.$modal).val(lugar_trabajo);
+            $('[name="telefono_trabajo"]', self.$modal).val(telefono_trabajo);
+            $('[name="email_trabajo"]', self.$modal).val(email_trabajo);
+            $('[name="email_alterno"]', self.$modal).val(email_alterno);
+            $('[name="telefono_cell_1"]', self.$modal).val(telefono_cell_1);
+            $('[name="telefono_cell_2"]', self.$modal).val(telefono_cell_2);
+            $('[name="ref_1_surname_name"]', self.$modal).val(ref_1_surname_name);
+            $('[name="ref_1_direccion"]', self.$modal).val(ref_1_direccion);
+            $('[name="ref_1_tlfo_fijo_cell"]', self.$modal).val(ref_1_tlfo_fijo_cell);
+            $('[name="ref_1_parentesco"]', self.$modal).val(ref_1_parentesco);
+            $('[name="ref_2_surname_name"]', self.$modal).val(ref_2_surname_name);
+            $('[name="ref_2_direccion"]', self.$modal).val(ref_2_direccion);
+            $('[name="ref_2_tlfo_fijo_cell"]', self.$modal).val(ref_2_tlfo_fijo_cell);
+            $('[name="ref_2_parentesco"]', self.$modal).val(ref_2_parentesco);
+            
+            
             $.uniform.update();
             return;
         }
         data = {
-            id_person: $('[name="id_person"]', self.$modal).val(),
+            /*id_person: $('[name="id_person"]', self.$modal).val(),
             name: $('[name="name"]', self.$modal).val(),
             surname: $('[name="surname"]', self.$modal).val(),
             tipo_documento: $('[name="tipo_documento"]', self.$modal).select2('val'),
@@ -499,14 +509,14 @@ var Modal_UserAcount = {
             id_profile: $('[name="id_profile"]', self.$modal).select2('val'),
             id_company_branchs: $('[name="id_company_branchs"]', self.$modal).select2('val'),
             isActive: $('[name="isActive"]', self.$modal).prop('checked') ? 1 : 0
-
+                    */
         };
         return data;
     },
     initLoadComponents: function (fLoad)
     {
         var self = this;
-        UserSettings_Model.loadComponents(function (res)
+        ControlVentaCFAE_Model.loadComponents(function (res)
         {
             if (res.data.eCatalogs['TIPO_IDENT'])
             {
@@ -522,7 +532,7 @@ var Modal_UserAcount = {
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (tipo_identificacion.value == ControlVentaCFAE_Base.user_settings_form_default.tipo_documento.value)
+                            if (tipo_identificacion.value == ControlVentaCFAE_Base.cfae_form_default.tipo_documento.value)
                             {
                                 isView = tipo_identificacion.value;
                             }
@@ -564,7 +574,7 @@ var Modal_UserAcount = {
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (genero.value == ControlVentaCFAE_Base.user_settings_form_default.gender.value)
+                            if (genero.value == ControlVentaCFAE_Base.cfae_form_default.gender.value)
                             {
                                 isView = genero.value;
                             }
@@ -605,7 +615,7 @@ var Modal_UserAcount = {
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (estado_civil.value == ControlVentaCFAE_Base.user_settings_form_default.estado_civil.value)
+                            if (estado_civil.value == ControlVentaCFAE_Base.cfae_form_default.estado_civil.value)
                             {
                                 isView = estado_civil.value;
                             }
@@ -646,7 +656,7 @@ var Modal_UserAcount = {
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (tipo_sangre.value == ControlVentaCFAE_Base.user_settings_form_default.tipo_sangre.value)
+                            if (tipo_sangre.value == ControlVentaCFAE_Base.cfae_form_default.tipo_sangre.value)
                             {
                                 isView = tipo_sangre.value;
                             }
@@ -674,51 +684,135 @@ var Modal_UserAcount = {
                 $.uniform.update();
                 $('.el-fin-tipo-sangre', self.$modal).hide();
             }
-
-            if (res.data.eProfiles)
+            
+            if (res.data.eCatalogs['DISCAPACIDAD'])
             {
-
-                $('.el-fin-perfil', self.$modal).show();
-
-                var ePERFILES = res.data.eProfiles;
+                $('.el-fin-discapacidad', self.$modal).show();
+                var DISCAPACIDAD = res.data.eCatalogs['DISCAPACIDAD'];
                 var html = '';
-                if (ePERFILES.length > 0)
+                if (DISCAPACIDAD.length > 0)
                 {
                     var isView = 0;
-                    var _value = $('select[name="id_profile"]', self.$modal).attr('_value');
-                    $.each(ePERFILES, function (idx, profile)
+                    var _value = $('select[name="discapacidad"]', self.$modal).attr('_value');
+                    $.each(DISCAPACIDAD, function (idx, discapacidad)
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (profile.value == ControlVentaCFAE_Base.user_settings_form_default.id_profile.value)
+                            if (discapacidad.value == ControlVentaCFAE_Base.cfae_form_default.discapacidad.value)
                             {
-                                isView = profile.value;
+                                isView = discapacidad.value;
                             }
                         }
                         else
                         {
-                            if (profile.value == _value)
+
+                            if (discapacidad.value == _value)
                             {
-                                isView = profile.value;
+                                isView = discapacidad.value;
                             }
                         }
 
-                        html += '<option value="' + (profile.value) + '">' + (profile.text) + '</option>';
+                        html += '<option value="' + (discapacidad.value) + '">' + (discapacidad.text) + '</option>';
                     });
                 }
                 else
                 {
                     html += '<option value="">&lt;VACIO&gt;</option>';
                 }
-                $('select[name="id_profile"]', self.$modal)
+                $('select[name="discapacidad"]', self.$modal)
                         .html(html)
-                        .select2('val', isView != 0 ? isView : $('[name="id_profile"]', self.$modal).eq(0).select2("val"))
+                        .select2('val', isView != 0 ? isView : $('[name="discapacidad"]', self.$modal).eq(0).select2("val"))
+                        .select2('close');
+                $.uniform.update();
+                $('.el-fin-discapacidad', self.$modal).hide();
+            }
+            
+            if (res.data.eCatalogs['NIVEL_ACADEMICO'])
+            {
+                $('.el-fin-nivel-academico', self.$modal).show();
+                var NIVEL_ACADEMICO = res.data.eCatalogs['NIVEL_ACADEMICO'];
+                var html = '';
+                if (NIVEL_ACADEMICO.length > 0)
+                {
+                    var isView = 0;
+                    var _value = $('select[name="nivel_academico"]', self.$modal).attr('_value');
+                    $.each(NIVEL_ACADEMICO, function (idx, nivel_academico)
+                    {
+                        if (typeof _value == 'undefined')
+                        {
+                            if (nivel_academico.value == ControlVentaCFAE_Base.cfae_form_default.nivel_academico.value)
+                            {
+                                isView = nivel_academico.value;
+                            }
+                        }
+                        else
+                        {
+
+                            if (nivel_academico.value == _value)
+                            {
+                                isView = nivel_academico.value;
+                            }
+                        }
+
+                        html += '<option value="' + (nivel_academico.value) + '">' + (nivel_academico.text) + '</option>';
+                    });
+                }
+                else
+                {
+                    html += '<option value="">&lt;VACIO&gt;</option>';
+                }
+                $('select[name="nivel_academico"]', self.$modal)
+                        .html(html)
+                        .select2('val', isView != 0 ? isView : $('[name="nivel_academico"]', self.$modal).eq(0).select2("val"))
+                        .select2('close');
+                $.uniform.update();
+                $('.el-fin-nivel-academico', self.$modal).hide();
+            }
+            
+            if (res.data.eSedes)
+            {
+
+                $('.el-fin-sede', self.$modal).show();
+
+                var eSEDES = res.data.eSedes;
+                var html = '';
+                if (eSEDES.length > 0)
+                {
+                    var isView = 0;
+                    var _value = $('select[name="id_sede"]', self.$modal).attr('_value');
+                    $.each(eSEDES, function (idx, sede)
+                    {
+                        if (typeof _value == 'undefined')
+                        {
+                            if (sede.id == ControlVentaCFAE_Base.cfae_form_default.id_sede.value)
+                            {
+                                isView = sede.id;
+                            }
+                        }
+                        else
+                        {
+                            if (sede.id == _value)
+                            {
+                                isView = sede.id;
+                            }
+                        }
+
+                        html += '<option value="' + (sede.id) + '">' + (sede.name) + '</option>';
+                    });
+                }
+                else
+                {
+                    html += '<option value="">&lt;VACIO&gt;</option>';
+                }
+                $('select[name="id_sede"]', self.$modal)
+                        .html(html)
+                        .select2('val', isView != 0 ? isView : $('[name="id_sede"]', self.$modal).eq(0).select2("val"))
                         .select2('close');
 
                 $.uniform.update();
-                $('.el-fin-perfil', self.$modal).hide();
+                $('.el-fin-sede', self.$modal).hide();
             }
-
+            /*
             if (res.data.eCompanyBranches)
             {
 
@@ -735,7 +829,7 @@ var Modal_UserAcount = {
                     {
                         if (typeof _value == 'undefined')
                         {
-                            if (company_branch.value == ControlVentaCFAE_Base.user_settings_form_default.id_company_branchs)
+                            if (company_branch.value == ControlVentaCFAE_Base.cfae_form_default.id_company_branchs)
                             {
                                 isView = company_branch.value;
                             }
@@ -763,16 +857,16 @@ var Modal_UserAcount = {
 
                 $.uniform.update();
                 $('.el-fin-company-branchs', self.$modal).hide();
-            }
+            }*/
 
         });
         self.loadPais(fLoad);
     },
-    loadPais: function (fLoad)
+    loadCursoCapacitacion: function ()
     {
         var self = this;
-        $('.el-fin-pais', self.$modal).show();
-        UserSettings_Model.loadPais(function (res) {
+        $('.el-fin-curso-capacitacion', self.$modal).show();
+        ControlVentaCFAE_Model.loadPais(function (res) {
             var html = '';
             var isView = 0;
             if (res.data['cbo-pais'].length > 0)
@@ -782,7 +876,49 @@ var Modal_UserAcount = {
                 {
                     if (typeof _value == 'undefined')
                     {
-                        if (pais.value == ControlVentaCFAE_Base.user_settings_form_default.id_pais.value)
+                        if (pais.value == ControlVentaCFAE_Base.cfae_form_default.id_pais.value)
+                        {
+                            isView = pais.value;
+                        }
+                    }
+                    else
+                    {
+                        if (pais.value == _value)
+                        {
+                            isView = pais.value;
+                        }
+                    }
+                    html += '<option value="' + (pais.value) + '">' + (pais.text) + '</option>';
+                });
+            }
+            else
+            {
+                html += '<option value="">&lt;VACIO&gt;</option>';
+            }
+            $('[name="id_pais"]', self.$modal)
+                    .html(html)
+                    .select2('val', isView != 0 ? isView : $('[name="id_pais"]', self.$modal).eq(0).select2("val"))
+                    .select2('close');
+            $.uniform.update();
+            $('.el-fin-pais', self.$modal).hide();
+            self.loadProvincia(fLoad);
+        });
+    },
+    loadPais: function (fLoad)
+    {
+        var self = this;
+        $('.el-fin-pais', self.$modal).show();
+        ControlVentaCFAE_Model.loadPais(function (res) {
+            var html = '';
+            var isView = 0;
+            if (res.data['cbo-pais'].length > 0)
+            {
+                var _value = $('select[name="id_pais"]', self.$modal).attr('_value');
+                $.each(res.data['cbo-pais'], function (idx, pais)
+                {
+                    if (typeof _value == 'undefined')
+                    {
+                        if (pais.value == ControlVentaCFAE_Base.cfae_form_default.id_pais.value)
                         {
                             isView = pais.value;
                         }
@@ -815,7 +951,7 @@ var Modal_UserAcount = {
         var self = this;
         var id_pais = $('select[name="id_pais"]', self.$modal).select2('val');
         $('.el-fin-provincia', self.$modal).show();
-        UserSettings_Model.loadProvincia(id_pais, function (res) {
+        ControlVentaCFAE_Model.loadProvincia(id_pais, function (res) {
             var html = '';
             var isView = 0;
             if (res.data['cbo-provincia'].length > 0)
@@ -825,7 +961,7 @@ var Modal_UserAcount = {
                 {
                     if (typeof _value == 'undefined')
                     {
-                        if (provincia.value == ControlVentaCFAE_Base.user_settings_form_default.id_provincia.value)
+                        if (provincia.value == ControlVentaCFAE_Base.cfae_form_default.id_provincia.value)
                         {
                             isView = provincia.value;
                         }
@@ -858,7 +994,7 @@ var Modal_UserAcount = {
         var self = this;
         var id_provincia = $('select[name="id_provincia"]', self.$modal).select2('val');
         $('.el-fin-ciudad', self.$modal).show();
-        UserSettings_Model.loadCiudad(id_provincia, function (res) {
+        ControlVentaCFAE_Model.loadCiudad(id_provincia, function (res) {
             var html = '';
             if (res.data['cbo-ciudad'].length > 0)
             {
@@ -869,7 +1005,7 @@ var Modal_UserAcount = {
                     if (typeof _value == 'undefined')
                             //if (_value == 0)
                             {
-                                if (ciudad.value == ControlVentaCFAE_Base.user_settings_form_default.id_ciudad.value)
+                                if (ciudad.value == ControlVentaCFAE_Base.cfae_form_default.id_ciudad.value)
                                 {
                                     isView = ciudad.value;
                                 }
@@ -909,12 +1045,12 @@ var Modal_UserAcount = {
         var data = self.data();
         self.errorClear();
         self.formLoading('save');
-        UserSettings_Model.saveAcount(data, function (res) {
+        ControlVentaCFAE_Model.saveAcount(data, function (res) {
             if (res.isSuccess)
             {
                 Core.Notification.success(res.message);
                 self.close();
-                UserSettings_Controller.refresDataTable(false);
+                ControlVentaCFAE_Controller.refresDataTable(false);
             }
             else
             {

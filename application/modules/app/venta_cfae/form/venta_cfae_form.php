@@ -15,7 +15,7 @@ class Form_App_Venta_Cfae extends MY_Form
     public $nivel_academico;
     public $discapacidad;
     public $id_pais;
-    public $provincia;
+    public $id_provincia;
     public $id_ciudad;
     public $calle_principal;
     public $calle_secundaria;
@@ -35,6 +35,9 @@ class Form_App_Venta_Cfae extends MY_Form
     public $ref_2_direccion;
     public $ref_2_tlfo_fijo_cell;
     public $ref_2_parentesco;
+    public $tipo_sangre;
+    public $id_nationality;
+    public $lugar_trabajo;
     
     //ALUMNO
     public $id_alumno;
@@ -68,8 +71,8 @@ class Form_App_Venta_Cfae extends MY_Form
         $this->gender                       = 'GENDER_MALE';
         $this->estado_civil                 = 'ESTADO_CIVIL_SOLTERO';
         $this->email                        = '';
-        $this->nivel_academico              = '';
-        $this->discapacidad                 = '';
+        $this->nivel_academico              = 'NIVEL_SECUNDARIA';
+        $this->discapacidad                 = 'DISC_NINGUNA';
         $this->id_provincia                 = 1558;
         $this->id_pais                      = 70;
         $this->id_ciudad                    = 47949;
@@ -92,6 +95,8 @@ class Form_App_Venta_Cfae extends MY_Form
         $this->ref_2_tlfo_fijo_cell         = '';
         $this->ref_2_parentesco             = '';
         $this->tipo_sangre                  = 'TIPO_SANGRE_A+';
+        $this->id_nationality               = 70;
+        $this->lugar_trabajo                = '';
         
         //ALUMNO
         $this->id_alumno                    = 0;
@@ -107,6 +112,7 @@ class Form_App_Venta_Cfae extends MY_Form
         $this->estado_date_cfae             = '';
         $this->id_sede                      = 0;
         $this->promocion_curso              = '';
+        $this->id_curso_capacitacion        = 0;
         
         if( $isReadPost )
         {
@@ -152,6 +158,8 @@ class Form_App_Venta_Cfae extends MY_Form
         $this->ref_2_tlfo_fijo_cell         = $MY->input->post('ref_2_tlfo_fijo_cell');
         $this->ref_2_parentesco             = $MY->input->post('ref_2_parentesco');
         $this->tipo_sangre                  = $MY->input->post('tipo_sangre');
+        $this->id_nationality               = $MY->input->post('id_nationality');
+        $this->lugar_trabajo                = $MY->input->post('lugar_trabajo');
         
         //ALUMNO
         $this->id_alumno                    = $MY->input->post('id_alumno');
@@ -267,6 +275,8 @@ class Form_App_Venta_Cfae extends MY_Form
         $ePerson->ref_2_tlfo_fijo_cell      = $this->ref_2_tlfo_fijo_cell;
         $ePerson->ref_2_parentesco          = $this->ref_2_parentesco;
         $ePerson->tipo_sangre               = $this->tipo_sangre;
+        $ePerson->id_nationality            = $this->id_nationality;
+        $ePerson->lugar_trabajo             = $this->lugar_trabajo;
         
         return $ePerson;
     }
@@ -305,6 +315,8 @@ class Form_App_Venta_Cfae extends MY_Form
         $this->ref_2_tlfo_fijo_cell         = $ePerson->ref_2_tlfo_fijo_cell;
         $this->ref_2_parentesco             = $ePerson->ref_2_parentesco;
         if(!empty($ePerson->tipo_sangre)) { $this->tipo_sangre   = $ePerson->tipo_sangre; }
+        $this->id_nationality               = $ePerson->id_nationality;
+        $this->lugar_trabajo                = $ePerson->lugar_trabajo;
         
     }   
        

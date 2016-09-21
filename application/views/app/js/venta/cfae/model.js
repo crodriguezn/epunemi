@@ -25,6 +25,15 @@ var ControlVentaCFAE_Model = {
             }
         });
     },
+    loadCursoCapacitacion: function (fSuccess, fFail)//OK
+    {
+        Core.Ajax.post(
+                Core.site_url(ControlVentaCFAE_Base.linkx + '/process/load-curso-capacitacion'),
+                {},
+                fSuccess,
+                fFail
+                );
+    },
     loadPais: function (fSuccess, fFail)//OK
     {
         Core.Ajax.post(

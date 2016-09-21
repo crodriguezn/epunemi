@@ -44,11 +44,9 @@ class Sede_Model extends MY_Model
     }
     
     
-    /*function filter(filterEmployee $filter, &$eEmployees, &$ePersons, &$eDepartaments, &$count )
+    function filter(filterSede $filter, &$eSedes, &$count )
     {
-        $eEmployees = array();
-        $ePersons = array();
-        $eDepartaments = array();
+        $eSedes = array();
         $count = 0;
         
         $queryR = $this->db->query($this->filterQuery($filter));
@@ -75,53 +73,37 @@ class Sede_Model extends MY_Model
         {
             foreach( $rows as $row )
             {
-                $eEmployee = new eEmployee();
-                $eEmployee->parseRow($row, 'e_');
+                $eSede = new eSede();
+                $eSede->parseRow($row, 's_');
 
-                $eEmployees[] = $eEmployee;
+                $eSedes[] = $eSede;
                 
-                $ePerson = new ePerson();
-                $ePerson->parseRow($row, 'p_');
-
-                $ePersons[] = $ePerson;
-                
-                $eDepartament = new eDepartament();
-                $eDepartament->parseRow($row, 'd_');
-
-                $eDepartaments[] = $eDepartament;
             }
         }
         
     }
 
-    function filterQuery(filterEmployee $filter, $useCounter=FALSE )
+    function filterQuery(filterSede $filter, $useCounter=FALSE )
     {
-        $select_employee = $this->buildSelectFields('e_', 'e', $this->table);
-        $select_person = $this->buildSelectFields('p_', 'p', 'person');
-        $select_departament = $this->buildSelectFields('d_', 'd', 'departament');
-        $select = ($select_employee.','.$select_person.','.$select_departament);
+        $select_sede = $this->buildSelectFields('s_', 's', $this->table);
+        
+        $select = ($select_sede);
         $sql = "
             SELECT 
                 ".( $useCounter ? 'COUNT(*) AS "count"' : $select )."
-            FROM \"".( $this->table )."\" AS \"u\"
-                INNER JOIN \"person\" AS \"p\" ON \"p\".\"id\" = \"e\".\"id_person\" 
-                INNER JOIN \"departament\" AS \"d\" ON \"d\".\"id\" = \"e\".\"id_departament\" 
+            FROM \"".( $this->table )."\" AS \"s\"
             WHERE 1=1
                 AND (
-                    UPPER(\"p\".\"name\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
-                    UPPER(\"p\".\"document\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
-                    UPPER(\"p\".\"surname\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
-                    UPPER(\"d\".\"description\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR
-                    UPPER(\"d\".\"description_key\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%')
+                    UPPER(\"s\".\"name\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') 
                 )
-            " . ( $useCounter ? '' : " GROUP BY \"e\".\"id\", \"p\".\"id\", \"d\".\"id\" " ) . "
-            " . ( $useCounter ? '' : " ORDER BY \"surname\" ASC " ) . "
+            " . ( !$filter->isActive ? '' : " AND \"s\".\"isActive\"=" . ( $this->db->escape(1) ) . " " ) . "
+            " . ( $useCounter ? '' : " GROUP BY \"s\".\"id\" " ) . "
+            " . ( $useCounter ? '' : " ORDER BY \"s\".\"name\" ASC " ) . "
             " . ( $useCounter || is_null($filter->limit) || is_null($filter->offset) ? '' : " LIMIT ".( $filter->limit )." OFFSET ".( $filter->offset )." " ) . "
         ";
         //Helper_Log::write($sql);
         return $sql;
     }
-    */
     
 }
 
@@ -141,7 +123,7 @@ class eSede extends MY_Entity
             $this->name             = '';
             $this->direccion        = '';
             $this->id_departament   = 0;
-            $this->isActive         = '';
+            $this->isActive         = 0;
         }
     }
 }
@@ -149,10 +131,12 @@ class eSede extends MY_Entity
 class filterSede extends MY_Entity_Filter
 {
     public $id_departament;
+    public $isActive;
     public function __construct()
     {
         parent::__construct();
         $this->id_departament   = NULL;
+        $this->isActive         = FALSE;
     }
     
 }
