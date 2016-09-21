@@ -1,0 +1,8 @@
+========================2016-09-20 10:53:45========================
+
+UPDATE "profile" SET "name" = 'Vendedor CFAE', "description" = 'Ventas de CFAE', "isAdmin" = '0', "isSuperAdmin" = '0', "isActive" = '1', "isEditable" = '1', "id_rol" = '4' WHERE "id" =  '4'
+
+Desde la IP: ::1
+
+=======================================================================
+

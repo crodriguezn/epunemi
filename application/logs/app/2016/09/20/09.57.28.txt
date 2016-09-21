@@ -1,0 +1,8 @@
+========================2016-09-20 09:57:28========================
+
+UPDATE "company_branch" SET "id_company" = 1, "name" = 'Matriz', "address" = 'KM 1/2 UNEMI', "phone" = '+593 98 864 4407', "isActive" = '1', "id_ciudad" = '47949', "monthly_price" = '35', "daily_price" = '2' WHERE "id" =  '1'
+
+Desde la IP: ::1
+
+=======================================================================
+

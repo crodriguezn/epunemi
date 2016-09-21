@@ -1,0 +1,41 @@
+========================2016-09-20 10:37:16========================
+
+INSERT INTO "person" ("name", "surname", "tipo_documento", "document", "birthday", "gender", "address", "phone_cell", "email", "estado_civil", "tipo_sangre", "id_ciudad", "id") VALUES ('Carlos Luis', 'Rodriguez Nieto', 'TIPO_IDENT_CEDULA', '0928429745', '1990-07-12', 'GENDER_MALE', 'Milagro', '', 'taylorluis93@gmail.com', 'ESTADO_CIVIL_CASADO', 'TIPO_SANGRE_O+', '47949', 3)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:37:16========================
+
+INSERT INTO "user" ("id_person", "username", "password", "id") VALUES (3, 'crodriguezn', 'e10adc3949ba59abbe56e057f20f883e', 2)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:37:16========================
+
+INSERT INTO "user_profile" ("id_user", "id_profile", "isActive", "id") VALUES (2, '4', '1', 2)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:37:16========================
+
+DELETE FROM "user_profile__company_branch"
+WHERE "id_user_profile" =  2
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:37:16========================
+
+INSERT INTO "user_profile__company_branch" ("id_user_profile", "id_company_branch", "id") VALUES (2, '1', 2)
+
+Desde la IP: ::1
+
+=======================================================================
+

@@ -1,0 +1,16 @@
+========================2016-09-20 10:22:51========================
+
+INSERT INTO "module" ("id_parent", "name", "description", "name_key", "num_order", "isAdmin", "isActive", "name_icon", "id") VALUES (NULL, 'Venta', 'Ventas', 'venta', 0, 0, '1', '', 18)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:22:51========================
+
+INSERT INTO "permission" ("name", "description", "name_key", "id_module", "id") VALUES ('Acceso', 'Acceso al Modulo', 'access', 18, 39)
+
+Desde la IP: ::1
+
+=======================================================================
+

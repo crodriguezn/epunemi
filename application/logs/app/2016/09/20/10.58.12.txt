@@ -1,0 +1,16 @@
+========================2016-09-20 10:58:12========================
+
+UPDATE "module" SET "id_parent" = NULL, "name" = 'Venta', "description" = 'Ventas', "name_key" = 'venta', "isAdmin" = '0', "isActive" = '1', "name_icon" = 'icon-eye2' WHERE "id" =  '18'
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:58:12========================
+
+UPDATE "permission" SET "name" = 'Acceso', "description" = 'Acceso al Modulo', "name_key" = 'access', "id_module" = '18' WHERE "id" =  '39'
+
+Desde la IP: ::1
+
+=======================================================================
+

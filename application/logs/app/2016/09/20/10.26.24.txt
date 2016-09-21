@@ -1,0 +1,32 @@
+========================2016-09-20 10:26:24========================
+
+INSERT INTO "module" ("id_parent", "name", "description", "name_key", "num_order", "isAdmin", "isActive", "name_icon", "id") VALUES ('18', 'CFAE', 'Submodulo de ventas de CFAE ', 'venta_cfae', 0, 0, '1', NULL, 19)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:26:24========================
+
+INSERT INTO "permission" ("name", "description", "name_key", "id_module", "id") VALUES ('Acceso', 'Acceso al submodulo', 'access', 19, 40)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:26:24========================
+
+INSERT INTO "permission" ("name", "description", "name_key", "id_module", "id") VALUES ('Crear', 'Crear una venta', 'create', 19, 41)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:26:24========================
+
+INSERT INTO "permission" ("name", "description", "name_key", "id_module", "id") VALUES ('Editar/Actualizar', 'Editar/Actualizar una venta', 'update', 19, 42)
+
+Desde la IP: ::1
+
+=======================================================================
+

@@ -1,0 +1,8 @@
+========================2016-09-20 10:33:45========================
+
+INSERT INTO "profile" ("name", "description", "isAdmin", "isSuperAdmin", "isActive", "isEditable", "id_rol", "id") VALUES ('Vendedor', 'Ventas', 0, 0, '1', 1, '4', 4)
+
+Desde la IP: ::1
+
+=======================================================================
+

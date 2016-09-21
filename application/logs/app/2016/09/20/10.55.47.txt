@@ -1,0 +1,16 @@
+========================2016-09-20 10:55:47========================
+
+INSERT INTO "module" ("id_parent", "name", "description", "name_key", "num_order", "isAdmin", "isActive", "name_icon", "id") VALUES ('18', 'ECUNEMI', 'Ventas de ECUNEMI', 'venta_ecunemi', 0, 0, '1', NULL, 20)
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:55:47========================
+
+INSERT INTO "permission" ("name", "description", "name_key", "id_module", "id") VALUES ('Acceso', 'Acceso a Submodulo', 'access', 20, 43)
+
+Desde la IP: ::1
+
+=======================================================================
+

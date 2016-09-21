@@ -1,0 +1,1719 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="epunemi" nm="newDb" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\Bitnami\wappstack-5.4.37-0\apache2\htdocs\gaviotaconstruction\_files\DB\disign</DocFolder>
+  <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="app_version">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkapp_version"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="update_time" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isDataBase" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isProject" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="app_version_id_Idx" spa="0" unq="1">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="catalog">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcatalog"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_catalog_type" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_catalog_catalog_type" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="catalog_type" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="catalog" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_catalog_type" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="catalog_code_Idx" spa="0" unq="1">
+        <ClNs>code</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="catalog_id_catalog_type_Idx" spa="0" unq="0">
+        <ClNs>id_catalog_type</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="catalog_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="catalog_type">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcatalog_type"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="catalog_type_code_Idx" spa="0" unq="1">
+        <ClNs>code</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="catalog_type_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ciudad">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="ciudad_pkey"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_pais" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_provincia" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Latitude" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Longitude" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="TimeZone" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="DmaId" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Code" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="ciudad_id_pais_fkey" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="pais" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="ciudad" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_pais" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="ciudad_id_provincia_fkey" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="provincia" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="ciudad" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_provincia" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="ciudad_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="ciudad_id_pais_Idx" spa="0" unq="0">
+        <ClNs>id_pais</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="ciudad_id_provincia_Idx" spa="0" unq="0">
+        <ClNs>id_provincia</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="ciudad_nombre_Idx" spa="0" unq="0">
+        <ClNs>nombre</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="company">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcompany"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="phone" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="company_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="company_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="company_name_key_Idx" spa="0" unq="1">
+        <ClNs>name_key</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="company_branch">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcompany_branch"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_company" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="address" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="phone" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_ciudad" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_company_branch_ciudad" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="ciudad" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="company_branch" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_ciudad" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_company_branch_company" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="company" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="company_branch" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_company" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="company_branch_id_ciudad_Idx" spa="0" unq="0">
+        <ClNs>id_ciudad</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="company_branch_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="company_branch_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="configuration_system">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkconfiguration_system"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_system" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="logo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="450" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="session_time_limit_min" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="session_time_limit_max" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isSaveBinnacle" nu="1">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key_system" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="configuration_system_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="configuration_system_name_system_Idx" spa="0" unq="0">
+        <ClNs>name_system</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="curso_capacitacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcurso_capacitacion"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion_name_key_Idx" spa="0" unq="1">
+        <ClNs>name_key</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="curso_capacitacion__sede">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcurso_capacitacion__sede"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_curso_capacitacion" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_sede" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_curso_capacitacion__sede_curso_capacitacion" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="curso_capacitacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="curso_capacitacion__sede" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_curso_capacitacion" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_curso_capacitacion__sede_sede" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="sede" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="curso_capacitacion__sede" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_sede" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_curso_capacitacion_Idx" spa="0" unq="0">
+        <ClNs>id_curso_capacitacion</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_sede_Idx" spa="0" unq="0">
+        <ClNs>id_sede</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="departament">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkdepartament"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="director" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="departament_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="employee">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkemployee"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_person" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_departament" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_employee_departament" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="departament" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="employee" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_departament" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_employee_person" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="person" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="employee" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_person" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="employee_id_departament_Idx" spa="0" unq="0">
+        <ClNs>id_departament</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="employee_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="employee_id_person_Idx" spa="0" unq="0">
+        <ClNs>id_person</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="module">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkmodule"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_parent" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="num_order" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isAdmin" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_icon" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_module_module" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="module" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="module" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_parent" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="module_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="module_id_parent_Idx" spa="0" unq="0">
+        <ClNs>id_parent</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="module_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="module_name_key_Idx" spa="0" unq="1">
+        <ClNs>name_key</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="pais">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pais_pkey"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="FIPS104" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ISO2" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ISO3" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ISON" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Internet" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Capital" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="MapReference" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="NationalitySingular" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="NationalityPlural" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Currency" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CurrencyCode" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Population" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Title" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Comment" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="pais_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="pais_nombre_Idx" spa="0" unq="0">
+        <ClNs>nombre</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="permission">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkpermission"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_module" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_permission_module" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="module" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="permission" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_module" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="permission_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="permission_id_module_Idx" spa="0" unq="0">
+        <ClNs>id_module</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="permission_name_Idx" spa="0" unq="0">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="permission_name_key_Idx" spa="0" unq="0">
+        <ClNs>name_key</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="person">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkperson"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="surname" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_documento" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="document" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="birthday" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="gender" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado_civil" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nivel_academico" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="discapacidad" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_ciudad" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="calle_principal" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="calle_secundaria" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="referencia_domicilio" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="num_casa" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono_casa" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono_trabajo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono_cell_1" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono_cell_2" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email_trabajo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email_alterno" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_1_surname_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_1_direccion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_1_tlfo_fijo_cell" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_1_parentesco" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_2_surname_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_2_direccion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_2_tlfo_fijo_cell" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ref_2_parentesco" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="person_document_Idx" spa="0" unq="0">
+        <ClNs>document</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="person_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="person_surname_Idx" spa="0" unq="0">
+        <ClNs>surname</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="profile">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkprofile"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isAdmin" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isSuperAdmin" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isEditable" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_rol" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_profile_rol" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="rol" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="profile" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_rol" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="profile_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="profile_id_rol_Idx" spa="0" unq="0">
+        <ClNs>id_rol</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="profile_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="profile_permission">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkprofile_permission"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_profile" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_permission" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_profile_permission_permission" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="permission" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="profile_permission" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_permission" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_profile_permission_profile" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="profile" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="profile_permission" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_profile" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="profile_permission_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="profile_permission_id_permission_Idx" spa="0" unq="0">
+        <ClNs>id_permission</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="profile_permission_id_profile_Idx" spa="0" unq="0">
+        <ClNs>id_profile</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="provincia">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="provincia_pkey"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_pais" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Code" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ADM1Code" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="provincia_id_pais_fkey" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="pais" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="provincia" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_pais" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="provincia_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="provincia_id_pais_Idx" spa="0" unq="0">
+        <ClNs>id_pais</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="provincia_nombre_Idx" spa="0" unq="0">
+        <ClNs>nombre</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="rol">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkrol"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isEditable" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="rol_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="rol_name_Idx" spa="0" unq="1">
+        <ClNs>name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="rol_name_key_Idx" spa="0" unq="1">
+        <ClNs>name_key</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="rol_module">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkrol_module"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_rol" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_module" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_rol_module_module" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="module" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="rol_module" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_module" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_rol_module_rol" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="rol" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="rol_module" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_rol" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="rol_module_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="rol_module_id_module_Idx" spa="0" unq="0">
+        <ClNs>id_module</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="rol_module_id_rol_Idx" spa="0" unq="0">
+        <ClNs>id_rol</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="sale_control">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pksale_control"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_person" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registration_date" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_employee" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="update_date" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_sede" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_curso_capacitacion" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="promocion_curso" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_customer_person" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="person" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_person" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_sale_control_curso_capacitacion" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="curso_capacitacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_curso_capacitacion" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_sale_control_employee" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="employee" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_employee" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="customer_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="customer_id_person_Idx" spa="0" unq="0">
+        <ClNs>id_person</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="sale_control_id_curso_capacitacion_Idx" spa="0" unq="0">
+        <ClNs>id_curso_capacitacion</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="sale_control_id_employee_Idx" spa="0" unq="0">
+        <ClNs>id_employee</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="sede">
+      <Cm>sedes a nivel nacional</Cm>
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksede"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_departament" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_sede_departament" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="departament" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="sede" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_departament" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="sede_id_departament_Idx" spa="0" unq="0">
+        <ClNs>id_departament</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="sede_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx/>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="sede_name_Idx" spa="0" unq="0">
+        <ClNs>name</ClNs>
+        <OptTx/>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="session_activity">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pksession_activity"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user_profile" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="session_id" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_activity" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inUse" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_session_activity_user_profile" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user_profile" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="session_activity" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_user_profile" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="session_activity_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="session_activity_id_user_Idx" spa="0" unq="0">
+        <ClNs>id_user_profile</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="session_activity_session_id_Idx" spa="0" unq="0">
+        <ClNs>session_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkuser"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_person" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_picture" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_user_person" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="person" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="user" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_person" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_id_person_Idx" spa="0" unq="0">
+        <ClNs>id_person</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_username_Idx" spa="0" unq="1">
+        <ClNs>username</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_log">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkuser_log"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="info" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_time" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="url" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ip" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="action" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="browser" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_user_log_user" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="user_log" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_user" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_log_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_profile">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkuser_profile"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_profile" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="isActive" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_user_profile_profile" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="profile" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="user_profile" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_profile" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_user_profile_user" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="user_profile" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_user" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_profile_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_profile_id_profile_Idx" spa="0" unq="0">
+        <ClNs>id_profile</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_profile_id_user_Idx" spa="0" unq="0">
+        <ClNs>id_user</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_profile__company_branch">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkuser_profile__company_branch"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user_profile" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_company_branch" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_user_profile__company_branch_company_branch" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="company_branch" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="user_profile__company_branch" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_company_branch" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_user_profile__company_branch_user_profile" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user_profile" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="user_profile__company_branch" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_user_profile" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_profile__company_branch_id_company_branch_Idx" spa="0" unq="0">
+        <ClNs>id_company_branch</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_profile__company_branch_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_profile__company_branch_id_user_profile_Idx" spa="0" unq="0">
+        <ClNs>id_user_profile</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="false" FtSz="11" lkStgy="RightAngleStrategy" zm="0.75">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="0" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="catalog" x="51" y="35"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="catalog_type" x="357" y="38"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="company_branch" x="301" y="305"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="company" x="295" y="195"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="module" x="683" y="265"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="permission" x="1035" y="507"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="person" x="1031" y="35"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="profile" x="1414" y="556"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="session_activity" x="1792" y="237"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="user_log" x="1419" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="user" x="1418" y="219"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="app_version" x="686" y="40"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="configuration_system" x="1740" y="79"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="rol" x="680" y="605"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="rol_module" x="665" y="462"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="user_profile__company_branch" x="1393" y="392"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="profile_permission" x="1034" y="638"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="user_profile" x="1842" y="386"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="pais" x="52" y="534"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="provincia" x="373" y="534"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="ciudad" x="291" y="834"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="sale_control" x="1249" y="762"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="employee" x="1587" y="756"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="departament" x="1862" y="753"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="sede" x="1874" y="870"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion" x="1571" y="989"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion__sede" x="1861" y="1002"/>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.catalog.fk_catalog_catalog_type" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="357" x2="308" y1="48" y2="48"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.ciudad.ciudad_id_pais_fkey" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="222" x2="222" y1="769" y2="835"/>
+        <positionableLine lineRole="CHILD_LINE" x1="291" x2="226" y1="839" y2="839"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.ciudad.ciudad_id_provincia_fkey" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="568" x2="568" y1="626" y2="835"/>
+        <positionableLine lineRole="CHILD_LINE" x1="527" x2="564" y1="839" y2="839"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.company_branch.fk_company_branch_ciudad" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="414" x2="414" y1="834" y2="423"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.company_branch.fk_company_branch_company" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="394" x2="394" y1="287" y2="305"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_curso_capacitacion" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1798" x2="1861" y1="1040" y2="1040"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_sede" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1997" x2="1997" y1="962" y2="1002"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.employee.fk_employee_departament" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1862" x2="1844" y1="788" y2="788"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.employee.fk_employee_person" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1324" x2="1711" y1="133" y2="133"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1715" x2="1715" y1="756" y2="137"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.module.fk_module_module" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.permission.fk_permission_module" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="913" x2="1036" y1="335" y2="335"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1040" x2="1040" y1="507" y2="339"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.profile.fk_profile_rol" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="907" x2="1414" y1="638" y2="638"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.profile_permission.fk_profile_permission_permission" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1187" x2="1187" y1="599" y2="638"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.profile_permission.fk_profile_permission_profile" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1414" x2="1279" y1="586" y2="586"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1275" x2="1275" y1="638" y2="590"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.provincia.provincia_id_pais_fkey" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="326" x2="374" y1="697" y2="697"/>
+        <positionableLine lineRole="CHILD_LINE" x1="378" x2="378" y1="626" y2="693"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.rol_module.fk_rol_module_module" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="787" x2="787" y1="409" y2="462"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.rol_module.fk_rol_module_rol" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="785" x2="785" y1="605" y2="528"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.sale_control.fk_customer_person" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1124" x2="1124" y1="452" y2="825"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1249" x2="1128" y1="829" y2="829"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.sale_control.fk_sale_control_curso_capacitacion" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1571" x2="1405" y1="1029" y2="1029"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1401" x2="1401" y1="906" y2="1025"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.sale_control.fk_sale_control_employee" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1587" x2="1541" y1="796" y2="796"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.sede.fk_sede_departament" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="2005" x2="2005" y1="845" y2="870"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.session_activity.fk_session_activity_user_profile" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1930" x2="1930" y1="386" y2="329"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.user.fk_user_person" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1324" x2="1418" y1="242" y2="242"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.user_log.fk_user_log_user" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1521" x2="1521" y1="219" y2="181"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.user_profile.fk_user_profile_profile" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1660" x2="1957" y1="609" y2="609"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1961" x2="1961" y1="465" y2="605"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.user_profile.fk_user_profile_user" parentEdge="EAST" positioner="ThreeLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1663" x2="1740" y1="265" y2="265"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1842" x2="1748" y1="410" y2="410"/>
+        <positionableLine lineRole="MIDDLE_LINE" x1="1744" x2="1744" y1="406" y2="269"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.user_profile__company_branch.fk_user_profile__company_branch_company_branch" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="532" x2="532" y1="423" y2="444"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1393" x2="536" y1="448" y2="448"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.user_profile__company_branch.fk_user_profile__company_branch_user_profile" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1842" x2="1675" y1="422" y2="422"/>
+      </positionableLines>
+    </FkGl>
+    <Notes>
+      <Note bkCl="ffffffe6" x="1824" y="22">ZONA DE CONFIGURACIÓN DEL SISTEMA</Note>
+    </Notes>
+    <Zones>
+      <Zone bkCl="ffece9d8" h="534" nm="catalog" w="132" x="44" y="8"/>
+      <Zone bkCl="ffece9d8" h="304" nm="company" w="315" x="285" y="167"/>
+      <Zone bkCl="ffece9d8" h="984" nm="EPUENMI" w="389" x="1218" y="721"/>
+      <Zone bkCl="ffece9d8" h="572" nm="Geografica" w="511" x="46" y="505"/>
+      <Zone bkCl="ffece9d8" h="298" nm="module" w="224" x="643" y="206"/>
+      <Zone bkCl="ffece9d8" h="268" nm="permission" w="141" x="1015" y="484"/>
+      <Zone bkCl="ffece9d8" h="366" nm="person" w="464" x="1008" y="6"/>
+      <Zone bkCl="ffece9d8" h="268" nm="profile" w="178" x="1402" y="527"/>
+      <Zone bkCl="ffece9d8" h="264" nm="rol" w="125" x="664" y="568"/>
+      <Zone bkCl="ffff3333" h="398" nm="system" w="187" x="1705" y="44"/>
+      <Zone bkCl="ffece9d8" h="294" nm="user" w="326" x="1393" y="23"/>
+      <Zone bkCl="ffece9d8" h="324" nm="version" w="189" x="646" y="0"/>
+    </Zones>
+  </Dgm>
+  <RnmMgr NxRnmId="125">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="catalog" SupCls="Schema" SupNme="public">
+      <Rnm id="1" nNm="id" oNm="id_catalog_type"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="company_branch" SupCls="Schema" SupNme="public">
+      <Rnm id="2" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="company" SupCls="Schema" SupNme="public">
+      <Rnm id="3" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="module" SupCls="Schema" SupNme="public">
+      <Rnm id="4" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="permission" SupCls="Schema" SupNme="public">
+      <Rnm id="5" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="person" SupCls="Schema" SupNme="public">
+      <Rnm id="6" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="profile" SupCls="Schema" SupNme="public">
+      <Rnm id="7" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="profile_permission" SupCls="Schema" SupNme="public">
+      <Rnm id="8" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="profile_permission" SupCls="Schema" SupNme="public">
+      <Rnm id="9" nNm="id_permission" oNm="id_permisson"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="profile" SupCls="Schema" SupNme="public">
+      <Rnm id="10" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rol_module" SupCls="Schema" SupNme="public">
+      <Rnm id="11" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="session_activity" SupCls="Schema" SupNme="public">
+      <Rnm id="12" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_log" SupCls="Schema" SupNme="public">
+      <Rnm id="13" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user" SupCls="Schema" SupNme="public">
+      <Rnm id="14" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_permission" SupCls="Schema" SupNme="public">
+      <Rnm id="15" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_rol_company_branch" SupCls="Schema" SupNme="public">
+      <Rnm id="16" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profile" SupCls="Schema" SupNme="public">
+      <Rnm id="17" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="18" nNm="user_permission" oNm="users_permission"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="app_version" SupCls="Schema" SupNme="public">
+      <Rnm id="19" nNm="name" oNm="tableDB_versionName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="app_version" SupCls="Schema" SupNme="public">
+      <Rnm id="20" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="app_version" SupCls="Schema" SupNme="public">
+      <Rnm id="21" nNm="name_key" oNm="InsertBy"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="app_version" SupCls="Schema" SupNme="public">
+      <Rnm id="22" nNm="update_time" oNm="InsertTime"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="app_version" SupCls="Schema" SupNme="public">
+      <Rnm id="23" nNm="isActive" oNm="UpdateTime"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tableProject_version" SupCls="Schema" SupNme="public">
+      <Rnm id="24" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tp_menu" SupCls="Schema" SupNme="public">
+      <Rnm id="25" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="26" nNm="tp_menu" oNm="tp_module"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="configuration_company" SupCls="Schema" SupNme="public">
+      <Rnm id="27" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="configuration_company" SupCls="Schema" SupNme="public">
+      <Rnm id="28" nNm="id_company" oNm="favicon"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="configuration_system" SupCls="Schema" SupNme="public">
+      <Rnm id="29" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="51" nNm="profile" oNm="rol"/>
+      <Rnm id="34" nNm="rol" oNm="profile"/>
+      <Rnm id="31" nNm="profile" oNm="rol"/>
+      <Rnm id="30" nNm="rol" oNm="profile"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="36" nNm="module_permission_rol" oNm="module_permission"/>
+      <Rnm id="32" nNm="module_permission" oNm="module_rol"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="module_permission_rol" SupCls="Schema" SupNme="public">
+      <Rnm id="33" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="module_permission_rol" SupCls="Schema" SupNme="public">
+      <Rnm id="35" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_rol" SupCls="Schema" SupNme="public">
+      <Rnm id="37" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="session_activity" SupCls="Schema" SupNme="public">
+      <Rnm id="58" nNm="id_user_profile" oNm="id_user"/>
+      <Rnm id="46" nNm="id_user" oNm="id_user_rol_company_branch"/>
+      <Rnm id="45" nNm="id_user_rol_company_branch" oNm="id_user"/>
+      <Rnm id="44" nNm="id_user" oNm="id_user_rol_company_branch"/>
+      <Rnm id="42" nNm="id_user_rol_company_branch" oNm="id_user_rol"/>
+      <Rnm id="38" nNm="id_user_rol" oNm="id_user_profile"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="43" nNm="user_rol_company_branch" oNm="user_role_company_branch"/>
+      <Rnm id="39" nNm="user_role_company_branch" oNm="user_profile_company_branch"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_rol_company_branch" SupCls="Schema" SupNme="public">
+      <Rnm id="41" nNm="id_user" oNm="id_user_rol"/>
+      <Rnm id="40" nNm="id_user_rol" oNm="id_user_profile"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="47" nNm="tableProject_version" oNm="tableProject_Version"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="49" nNm="app_version" oNm="table_version"/>
+      <Rnm id="48" nNm="table_version" oNm="tableDB_version"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="configuration_system" SupCls="Schema" SupNme="public">
+      <Rnm id="50" nNm="session_time_limit_min" oNm="session_time_limit"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rol" SupCls="Schema" SupNme="public">
+      <Rnm id="52" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rol_module" SupCls="Schema" SupNme="public">
+      <Rnm id="53" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rol_module" SupCls="Schema" SupNme="public">
+      <Rnm id="54" nNm="id_rol" oNm="rol_moduleName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profile__company_branch" SupCls="Schema" SupNme="public">
+      <Rnm id="55" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="profile_permission" SupCls="Schema" SupNme="public">
+      <Rnm id="56" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profile" SupCls="Schema" SupNme="public">
+      <Rnm id="57" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="59" nNm="user_profile__company_branch" oNm="user_profile_company_branch"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profile__company_branch" SupCls="Schema" SupNme="public">
+      <Rnm id="60" nNm="id_user_profile" oNm="id_profile"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sale_control" SupCls="Schema" SupNme="public">
+      <Rnm id="61" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_imc" SupCls="Schema" SupNme="public">
+      <Rnm id="62" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_imc" SupCls="Schema" SupNme="public">
+      <Rnm id="65" nNm="update_date" oNm="date"/>
+      <Rnm id="64" nNm="date" oNm="create_date"/>
+      <Rnm id="63" nNm="create_date" oNm="update_date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="schedule" SupCls="Schema" SupNme="public">
+      <Rnm id="66" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="schedule" SupCls="Schema" SupNme="public">
+      <Rnm id="78" nNm="start_hour" oNm="start_time"/>
+      <Rnm id="76" nNm="start_time" oNm="time_scale"/>
+      <Rnm id="67" nNm="time_scale" oNm="check_in"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="schedule" SupCls="Schema" SupNme="public">
+      <Rnm id="77" nNm="final_hour" oNm="isActive"/>
+      <Rnm id="68" nNm="isActive" oNm="time_out"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="69" nNm="cab_class_registration" oNm="class_registration"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cab_class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="70" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="det_class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="71" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="det_class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="72" nNm="id_cab_class_registration" oNm="id_cabe"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="det_class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="74" nNm="date_time_arrival" oNm="date_registration"/>
+      <Rnm id="73" nNm="date_registration" oNm="datetime"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="75" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="79" nNm="control_imc" oNm="control_weight_height"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="80" nNm="control_monthly" oNm="monthly_control"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_monthly" SupCls="Schema" SupNme="public">
+      <Rnm id="81" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="82" nNm="employee" oNm="employe"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="employee" SupCls="Schema" SupNme="public">
+      <Rnm id="83" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="class_registration" SupCls="Schema" SupNme="public">
+      <Rnm id="84" nNm="id_employee" oNm="date_registration"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="employee" SupCls="Schema" SupNme="public">
+      <Rnm id="103" nNm="salary" oNm="date_registration"/>
+      <Rnm id="85" nNm="date_registration" oNm="registration_date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="94" nNm="head_invoce" oNm="head_invoce_monthly"/>
+      <Rnm id="90" nNm="head_invoce_monthly" oNm="head_invoce"/>
+      <Rnm id="86" nNm="head_invoce" oNm="income"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="head_invoce" SupCls="Schema" SupNme="public">
+      <Rnm id="88" nNm="id" oNm="Idid"/>
+      <Rnm id="87" nNm="Idid" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="detail_invoce" SupCls="Schema" SupNme="public">
+      <Rnm id="89" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="95" nNm="detail_invoce" oNm="detail_invoce_monthly"/>
+      <Rnm id="91" nNm="detail_invoce_monthly" oNm="detail_invoce"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="detail_invoce" SupCls="Schema" SupNme="public">
+      <Rnm id="96" nNm="id_head_invoce" oNm="id_head_invoce_monthly"/>
+      <Rnm id="92" nNm="id_head_invoce_monthly" oNm="id_head_invoce"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="type_service" SupCls="Schema" SupNme="public">
+      <Rnm id="93" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="product" SupCls="Schema" SupNme="public">
+      <Rnm id="97" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_monthly" SupCls="Schema" SupNme="public">
+      <Rnm id="98" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_monthly" SupCls="Schema" SupNme="public">
+      <Rnm id="99" nNm="date_registration" oNm="create_date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="product" SupCls="Schema" SupNme="public">
+      <Rnm id="102" nNm="isValidateQuantity" oNm="isNotValidateQuantity"/>
+      <Rnm id="100" nNm="isNotValidateQuantity" oNm="isNotQuantity"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="detail_invoce" SupCls="Schema" SupNme="public">
+      <Rnm id="101" nNm="quantity" oNm="sub_total"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="104" nNm="income" oNm="ingresos"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="income" SupCls="Schema" SupNme="public">
+      <Rnm id="105" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="106" nNm=" payment" oNm="expenses"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme=" payment" SupCls="Schema" SupNme="public">
+      <Rnm id="107" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="type_payment" SupCls="Schema" SupNme="public">
+      <Rnm id="108" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="product" SupCls="Schema" SupNme="public">
+      <Rnm id="110" nNm="name_key" oNm="description"/>
+      <Rnm id="109" nNm="description" oNm="detail"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="product" SupCls="Schema" SupNme="public">
+      <Rnm id="111" nNm="purchase_price" oNm=" purchase_price"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="112" nNm="sale_control" oNm="customer"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="employee" SupCls="Schema" SupNme="public">
+      <Rnm id="113" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="departament" SupCls="Schema" SupNme="public">
+      <Rnm id="114" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sede" SupCls="Schema" SupNme="public">
+      <Rnm id="115" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="116" nNm="sede" oNm="sedes"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="curso_capacitacion" SupCls="Schema" SupNme="public">
+      <Rnm id="117" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="118" nNm="curso_capacitacion" oNm="cursos_capacitacion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="curso_capacitacion" SupCls="Schema" SupNme="public">
+      <Rnm id="119" nNm="name_key" oNm="isActive"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="curso_capacitacion__sede" SupCls="Schema" SupNme="public">
+      <Rnm id="120" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sale_control" SupCls="Schema" SupNme="public">
+      <Rnm id="121" nNm="id_curso_capacitacion" oNm="id_curso"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="person" SupCls="Schema" SupNme="public">
+      <Rnm id="122" nNm="ref_1_surname_name" oNm="referencia_1_surname_name"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="person" SupCls="Schema" SupNme="public">
+      <Rnm id="124" nNm="ref_1_tlfo_fijo_cell" oNm="ref_1_tlf_fijo_cell"/>
+      <Rnm id="123" nNm="ref_1_tlf_fijo_cell" oNm="ref_1_telefono_fijo_cell"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/public</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (27)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (27)/sale_control</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+  </TreePaths>
+</Db>

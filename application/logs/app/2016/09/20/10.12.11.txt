@@ -1,0 +1,8 @@
+========================2016-09-20 10:12:11========================
+
+UPDATE "company_branch" SET "id_company" = 1, "name" = 'Guayaquil', "address" = 'Nuestra Señora del Carmen', "phone" = '0490950', "isActive" = '1', "id_ciudad" = '3789' WHERE "id" =  '2'
+
+Desde la IP: ::1
+
+=======================================================================
+

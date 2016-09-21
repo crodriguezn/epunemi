@@ -1,0 +1,16 @@
+========================2016-09-20 10:58:33========================
+
+UPDATE "module" SET "id_parent" = '18', "name" = 'ECUNEMI', "description" = 'Submodulo Ventas de ECUNEMI', "name_key" = 'venta_ecunemi', "isAdmin" = '0', "isActive" = '1', "name_icon" = NULL WHERE "id" =  '20'
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-20 10:58:33========================
+
+UPDATE "permission" SET "name" = 'Acceso', "description" = 'Acceso a Submodulo', "name_key" = 'access', "id_module" = '20' WHERE "id" =  '43'
+
+Desde la IP: ::1
+
+=======================================================================
+
