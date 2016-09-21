@@ -1,7 +1,7 @@
-<script src="<?php echo site_url('app/user_settings/mvcjs'); ?>"></script>
+<script src="<?php echo site_url('app/venta_cfae/mvcjs'); ?>"></script>
 <div class="page-header">
     <div class="page-title">
-        <h3>Ventas de CFAE</h3>
+        <h3>Control de Ventas</h3>
     </div>
 </div>
 <div class="breadcrumb-line">
@@ -31,8 +31,8 @@
                     <tr>
                         <th style="text-align: center">Documento</th>
                         <th style="text-align: center">Apellidos/Nombres</th>
-                        <th style="text-align: center">Usuario</th>
-                        <th style="text-align: center">Perfil</th>
+                        <th style="text-align: center">Sede</th>
+                        <th style="text-align: center">Curso</th>
                         <th style="text-align: center">Opciones</th>
                     </tr>
                 </thead>

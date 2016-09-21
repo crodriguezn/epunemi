@@ -44,10 +44,12 @@ class Control_Venta_Model extends MY_Model
     }
     
     
-    /*function filter(filterSaleControl $filter, &$ePersons, &$SaleControls, &$count )
+    function filter(filterControlVenta $filter, &$eControlVentas, &$ePersonas, &$eSedes, &$eCursoCapacitaciones, &$count )
     {
-        $SaleControls = array();
-        $ePersons = array();
+        $eControlVentas         = array();
+        $ePersonas              = array();
+        $eSedes                  = array();
+        $eCursoCapacitaciones   = array();
         $count = 0;
         
         $queryR = $this->db->query($this->filterQuery($filter));
@@ -74,49 +76,59 @@ class Control_Venta_Model extends MY_Model
         {
             foreach( $rows as $row )
             {
-                $eSaleControl = new eSaleControl();
-                $eSaleControl->parseRow($row, 'sc_');
-
-                $SaleControls[] = $eSaleControl;
+                $eControlVenta = new eControlVenta();
+                $eControlVenta->parseRow($row, 'cv_');
+                $eControlVentas[] = $eControlVenta;
                 
                 $ePerson = new ePerson();
                 $ePerson->parseRow($row, 'p_');
-
-                $ePersons[] = $ePerson;
+                $ePersonas[] = $ePerson;
                 
+                $eSede = new eSede();
+                $eSede->parseRow($row, 's_');
+                $eSedes[] = $eSede;
+                
+                $eCursoCapacitacion = new eCursoCapacitacion();
+                $eCursoCapacitacion->parseRow($row, 'cc_');
+                $eCursoCapacitaciones[] = $eCursoCapacitacion;
+
             }
         }
         
     }
 
-    function filterQuery(filterSaleControl $filter, $useCounter=FALSE )
+    function filterQuery(filterControlVenta $filter, $useCounter=FALSE )
     {
-        $select_employee = $this->buildSelectFields('e_', 'e', 'employee');
+        $select_sede = $this->buildSelectFields('s_', 's', 'sede');
         $select_person = $this->buildSelectFields('p_', 'p', 'person');
-        $select_salecontrol = $this->buildSelectFields('sc_', 'sc', $this->table);
-        $select = ($select_employee.','.$select_person.','.$select_salecontrol);
+        $select_cursocapacitacion = $this->buildSelectFields('cc_', 'cc', 'curso_capacitacion');
+        $select_controlventa = $this->buildSelectFields('cv_', 'cv', $this->table);
+        $select = ($select_sede.','.$select_person.','.$select_controlventa.','.$select_cursocapacitacion);
         $sql = "
             SELECT 
                 ".( $useCounter ? 'COUNT(*) AS "count"' : $select )."
-            FROM \"".( $this->table )."\" AS \"sc\"
-                INNER JOIN \"person\" AS \"p\" ON \"p\".\"id\" = \"sc\".\"id_person\" 
-                INNER JOIN \"employee\" AS \"e\" ON \"e\".\"id\" = \"sc\".\"id_employee\" 
+            FROM \"".( $this->table )."\" AS \"cv\"
+                INNER JOIN \"alumno\" AS \"a\" ON \"a\".\"id\" = \"cv\".\"id_alumno\" 
+                INNER JOIN \"person\" AS \"p\" ON \"p\".\"id\" = \"a\".\"id_person\" 
+                INNER JOIN \"curso_capacitacion\" AS \"cc\" ON \"cc\".\"id\" = \"cv\".\"id_curso_capacitacion\" 
+                INNER JOIN \"sede\" AS \"s\" ON \"s\".\"id\" = \"cv\".\"id_sede\" 
             WHERE 1=1
                 AND (
                     UPPER(\"p\".\"name\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
                     UPPER(\"p\".\"document\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
                     UPPER(\"p\".\"surname\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR 
-                    UPPER(\"d\".\"description\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR
-                    UPPER(\"d\".\"description_key\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%')
+                    UPPER(\"s\".\"name\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR
+                    UPPER(\"cc\".\"name\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%') OR
+                    UPPER(\"cc\".\"name_key\") LIKE UPPER('%" . ( $this->db->escape_like_str($filter->text) ) . "%')
                 )
-            " . ( $useCounter ? '' : " GROUP BY \"e\".\"id\", \"p\".\"id\", \"d\".\"id\" " ) . "
-            " . ( $useCounter ? '' : " ORDER BY \"surname\" ASC " ) . "
+                ".( !is_null($filter->id_employee) ? ' AND "cv"."id_employee"='.$filter->id_employee:"")."
+            " . ( $useCounter ? '' : " ORDER BY \"p\".\"surname\" ASC " ) . "
             " . ( $useCounter || is_null($filter->limit) || is_null($filter->offset) ? '' : " LIMIT ".( $filter->limit )." OFFSET ".( $filter->offset )." " ) . "
         ";
         //Helper_Log::write($sql);
         return $sql;
     }
-    */
+    
     
 }
 

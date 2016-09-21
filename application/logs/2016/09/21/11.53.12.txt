@@ -1,0 +1,56 @@
+========================2016-09-21 11:53:12========================
+
+
+            SELECT 
+                "s"."id" AS "s_id","s"."name" AS "s_name","s"."direccion" AS "s_direccion","s"."isActive" AS "s_isActive","s"."id_departament" AS "s_id_departament","p"."id" AS "p_id","p"."name" AS "p_name","p"."surname" AS "p_surname","p"."tipo_documento" AS "p_tipo_documento","p"."document" AS "p_document","p"."birthday" AS "p_birthday","p"."gender" AS "p_gender","p"."estado_civil" AS "p_estado_civil","p"."email" AS "p_email","p"."nivel_academico" AS "p_nivel_academico","p"."discapacidad" AS "p_discapacidad","p"."id_ciudad" AS "p_id_ciudad","p"."calle_principal" AS "p_calle_principal","p"."calle_secundaria" AS "p_calle_secundaria","p"."referencia_domicilio" AS "p_referencia_domicilio","p"."num_casa" AS "p_num_casa","p"."telefono_casa" AS "p_telefono_casa","p"."telefono_trabajo" AS "p_telefono_trabajo","p"."telefono_cell_1" AS "p_telefono_cell_1","p"."telefono_cell_2" AS "p_telefono_cell_2","p"."email_trabajo" AS "p_email_trabajo","p"."email_alterno" AS "p_email_alterno","p"."ref_1_surname_name" AS "p_ref_1_surname_name","p"."ref_1_direccion" AS "p_ref_1_direccion","p"."ref_1_tlfo_fijo_cell" AS "p_ref_1_tlfo_fijo_cell","p"."ref_1_parentesco" AS "p_ref_1_parentesco","p"."ref_2_surname_name" AS "p_ref_2_surname_name","p"."ref_2_direccion" AS "p_ref_2_direccion","p"."ref_2_tlfo_fijo_cell" AS "p_ref_2_tlfo_fijo_cell","p"."ref_2_parentesco" AS "p_ref_2_parentesco","p"."tipo_sangre" AS "p_tipo_sangre","cv"."id" AS "cv_id","cv"."id_alumno" AS "cv_id_alumno","cv"."registration_date" AS "cv_registration_date","cv"."estado" AS "cv_estado","cv"."id_employee" AS "cv_id_employee","cv"."estado_date" AS "cv_estado_date","cv"."id_sede" AS "cv_id_sede","cv"."id_curso_capacitacion" AS "cv_id_curso_capacitacion","cv"."promocion_curso" AS "cv_promocion_curso","cc"."id" AS "cc_id","cc"."name" AS "cc_name","cc"."name_key" AS "cc_name_key","cc"."isActive" AS "cc_isActive"
+            FROM "control_venta" AS "cv"
+                INNER JOIN "alumno" AS "a" ON "a"."id" = "cv"."id_alumno" 
+                INNER JOIN "person" AS "p" ON "p"."id" = "a"."id_person" 
+                INNER JOIN "curso_capacitacion" AS "cc" ON "cc"."id" = "cv"."id_curso_capacitacion" 
+                INNER JOIN "sede" AS "s" ON "s"."id" = "cv"."id_sede" 
+            WHERE 1=1
+                AND (
+                    UPPER("p"."name") LIKE UPPER('%%') OR 
+                    UPPER("p"."document") LIKE UPPER('%%') OR 
+                    UPPER("p"."surname") LIKE UPPER('%%') OR 
+                    UPPER("s"."name") LIKE UPPER('%%') OR
+                    UPPER("cc"."name") LIKE UPPER('%%') OR
+                    UPPER("cc"."name_key") LIKE UPPER('%%')
+                )
+                 AND "cv"."id_employee"=1
+             ORDER BY "p"."surname" ASC 
+             LIMIT 10 OFFSET 0 
+        
+
+Desde la IP: ::1
+
+=======================================================================
+
+========================2016-09-21 11:53:12========================
+
+
+            SELECT 
+                COUNT(*) AS "count"
+            FROM "control_venta" AS "cv"
+                INNER JOIN "alumno" AS "a" ON "a"."id" = "cv"."id_alumno" 
+                INNER JOIN "person" AS "p" ON "p"."id" = "a"."id_person" 
+                INNER JOIN "curso_capacitacion" AS "cc" ON "cc"."id" = "cv"."id_curso_capacitacion" 
+                INNER JOIN "sede" AS "s" ON "s"."id" = "cv"."id_sede" 
+            WHERE 1=1
+                AND (
+                    UPPER("p"."name") LIKE UPPER('%%') OR 
+                    UPPER("p"."document") LIKE UPPER('%%') OR 
+                    UPPER("p"."surname") LIKE UPPER('%%') OR 
+                    UPPER("s"."name") LIKE UPPER('%%') OR
+                    UPPER("cc"."name") LIKE UPPER('%%') OR
+                    UPPER("cc"."name_key") LIKE UPPER('%%')
+                )
+                 AND "cv"."id_employee"=1
+            
+            
+        
+
+Desde la IP: ::1
+
+=======================================================================
+

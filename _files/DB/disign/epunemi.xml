@@ -4,6 +4,40 @@
   <DefTblOpts/>
   <DocFolder>C:\Bitnami\wappstack-5.4.37-0\apache2\htdocs\gaviotaconstruction\_files\DB\disign</DocFolder>
   <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="alumno">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkalumno"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_person" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registration_date" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado_date" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_alumno_person" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="person" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="alumno" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_person" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="alumno_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="alumno_id_person_Idx" spa="0" unq="0">
+        <ClNs>id_person</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="app_version">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="id" nm="pkapp_version"/>
@@ -269,8 +303,81 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="control_venta">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcontrol_venta"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_alumno" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registration_date" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_employee" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado_date" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_sede" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_curso_capacitacion" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="promocion_curso" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_control_venta_alumno" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="alumno" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_venta" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_alumno" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_control_venta_curso_capacitacion" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="curso_capacitacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_venta" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_curso_capacitacion" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_control_venta_employee" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="employee" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_venta" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_employee" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_control_venta_sede" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="sede" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_venta" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_sede" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="control_venta_id_alumno_Idx" spa="0" unq="1">
+        <ClNs>id_alumno</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="control_venta_id_curso_capacitacion_Idx" spa="0" unq="0">
+        <ClNs>id_curso_capacitacion</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="control_venta_id_employee_Idx" spa="0" unq="0">
+        <ClNs>id_employee</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="control_venta_id_Idx" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="control_venta_id_sede_Idx" spa="0" unq="0">
+        <ClNs>id_sede</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="curso_capacitacion">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="id" nm="pkcurso_capacitacion"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
@@ -286,21 +393,21 @@
       </Cl>
       <Idx clu="0" ftx="0" nm="curso_capacitacion_id_Idx" spa="0" unq="0">
         <ClNs>id</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="curso_capacitacion_name_Idx" spa="0" unq="1">
         <ClNs>name</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="curso_capacitacion_name_key_Idx" spa="0" unq="1">
         <ClNs>name_key</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="curso_capacitacion__sede">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="id" nm="pkcurso_capacitacion__sede"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
@@ -323,15 +430,15 @@
       </Fk>
       <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_curso_capacitacion_Idx" spa="0" unq="0">
         <ClNs>id_curso_capacitacion</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_Idx" spa="0" unq="0">
         <ClNs>id</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="curso_capacitacion__sede_id_sede_Idx" spa="0" unq="0">
         <ClNs>id_sede</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -589,19 +696,19 @@
       <Cl au="0" df="" nm="email" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="nivel_academico" nu="0">
+      <Cl au="0" df="" nm="nivel_academico" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="discapacidad" nu="0">
+      <Cl au="0" df="" nm="discapacidad" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="id_ciudad" nu="0">
+      <Cl au="0" df="" nm="id_ciudad" nu="1">
         <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="calle_principal" nu="0">
+      <Cl au="0" df="" nm="calle_principal" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="calle_secundaria" nu="0">
+      <Cl au="0" df="" nm="calle_secundaria" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="referencia_domicilio" nu="1">
@@ -651,6 +758,9 @@
       </Cl>
       <Cl au="0" df="" nm="ref_2_parentesco" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_sangre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
       <Idx clu="0" ftx="0" nm="person_document_Idx" spa="0" unq="0">
         <ClNs>document</ClNs>
@@ -856,73 +966,9 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="sale_control">
-      <TblOpts>WITHOUT OIDS</TblOpts>
-      <Pk ClNs="id" nm="pksale_control"/>
-      <Cl au="0" df="" nm="id" nu="0">
-        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="id_person" nu="0">
-        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="registration_date" nu="0">
-        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="estado" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="id_employee" nu="0">
-        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="update_date" nu="1">
-        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="id_sede" nu="0">
-        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="id_curso_capacitacion" nu="0">
-        <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="promocion_curso" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_customer_person" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="person" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
-        <ClPr cdCl="id_person" prCl="id"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_sale_control_curso_capacitacion" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="curso_capacitacion" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
-        <ClPr cdCl="id_curso_capacitacion" prCl="id"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_sale_control_employee" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="employee" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="sale_control" oe="0" sch="public" zr="1"/>
-        <ClPr cdCl="id_employee" prCl="id"/>
-      </Fk>
-      <Idx clu="0" ftx="0" nm="customer_id_Idx" spa="0" unq="0">
-        <ClNs>id</ClNs>
-        <OptTx>USING btree</OptTx>
-      </Idx>
-      <Idx clu="0" ftx="0" nm="customer_id_person_Idx" spa="0" unq="0">
-        <ClNs>id_person</ClNs>
-        <OptTx>USING btree</OptTx>
-      </Idx>
-      <Idx clu="0" ftx="0" nm="sale_control_id_curso_capacitacion_Idx" spa="0" unq="0">
-        <ClNs>id_curso_capacitacion</ClNs>
-        <OptTx/>
-      </Idx>
-      <Idx clu="0" ftx="0" nm="sale_control_id_employee_Idx" spa="0" unq="0">
-        <ClNs>id_employee</ClNs>
-        <OptTx>USING btree</OptTx>
-      </Idx>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
     <Tbl UsSo="1" nm="sede">
       <Cm>sedes a nivel nacional</Cm>
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="id" nm="pksede"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Numeric" en="" id="2" ln="20" sc="0" sg="1" un="0"/>
@@ -946,15 +992,15 @@
       </Fk>
       <Idx clu="0" ftx="0" nm="sede_id_departament_Idx" spa="0" unq="0">
         <ClNs>id_departament</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="sede_id_Idx" spa="0" unq="0">
         <ClNs>id</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="sede_name_Idx" spa="0" unq="0">
         <ClNs>name</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -1196,12 +1242,18 @@
     <TbGl bkCl="ff6666ff" sch="public" tbl="pais" x="52" y="534"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="provincia" x="373" y="534"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="ciudad" x="291" y="834"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="sale_control" x="1249" y="762"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="employee" x="1587" y="756"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="departament" x="1862" y="753"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="sede" x="1874" y="870"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion" x="1571" y="989"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion__sede" x="1861" y="1002"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="control_venta" x="1307" y="760"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="employee" x="1645" y="760"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="departament" x="1944" y="754"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="sede" x="1955" y="871"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion" x="1620" y="991"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="curso_capacitacion__sede" x="1942" y="1003"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="alumno" x="992" y="780"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.alumno.fk_alumno_person" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1135" x2="1135" y1="465" y2="780"/>
+      </positionableLines>
+    </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.catalog.fk_catalog_catalog_type" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
         <positionableLine lineRole="SINGLE_LINE" x1="357" x2="308" y1="48" y2="48"/>
@@ -1229,25 +1281,46 @@
         <positionableLine lineRole="SINGLE_LINE" x1="394" x2="394" y1="287" y2="305"/>
       </positionableLines>
     </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.control_venta.fk_control_venta_alumno" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1256" x2="1307" y1="826" y2="826"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.control_venta.fk_control_venta_curso_capacitacion" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1620" x2="1463" y1="1031" y2="1031"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1459" x2="1459" y1="904" y2="1027"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.control_venta.fk_control_venta_employee" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1645" x2="1599" y1="800" y2="800"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.control_venta.fk_control_venta_sede" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1955" x2="1599" y1="887" y2="887"/>
+      </positionableLines>
+    </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_curso_capacitacion" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1798" x2="1861" y1="1040" y2="1040"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1847" x2="1942" y1="1042" y2="1042"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.curso_capacitacion__sede.fk_curso_capacitacion__sede_sede" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1997" x2="1997" y1="962" y2="1002"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="2078" x2="2078" y1="963" y2="1003"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.employee.fk_employee_departament" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1862" x2="1844" y1="788" y2="788"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1944" x2="1902" y1="789" y2="789"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.employee.fk_employee_person" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1324" x2="1711" y1="133" y2="133"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1715" x2="1715" y1="756" y2="137"/>
+        <positionableLine lineRole="PARENT_LINE" x1="1324" x2="1769" y1="133" y2="133"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1773" x2="1773" y1="760" y2="137"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.module.fk_module_module" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1291,26 +1364,9 @@
         <positionableLine lineRole="SINGLE_LINE" x1="785" x2="785" y1="605" y2="528"/>
       </positionableLines>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.sale_control.fk_customer_person" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
-      <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1124" x2="1124" y1="452" y2="825"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1249" x2="1128" y1="829" y2="829"/>
-      </positionableLines>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.sale_control.fk_sale_control_curso_capacitacion" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
-      <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="1571" x2="1405" y1="1029" y2="1029"/>
-        <positionableLine lineRole="CHILD_LINE" x1="1401" x2="1401" y1="906" y2="1025"/>
-      </positionableLines>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.sale_control.fk_sale_control_employee" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
-      <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1587" x2="1541" y1="796" y2="796"/>
-      </positionableLines>
-    </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.sede.fk_sede_departament" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="2005" x2="2005" y1="845" y2="870"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="2087" x2="2087" y1="846" y2="871"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.session_activity.fk_session_activity_user_profile" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1358,7 +1414,7 @@
     <Zones>
       <Zone bkCl="ffece9d8" h="534" nm="catalog" w="132" x="44" y="8"/>
       <Zone bkCl="ffece9d8" h="304" nm="company" w="315" x="285" y="167"/>
-      <Zone bkCl="ffece9d8" h="984" nm="EPUENMI" w="389" x="1218" y="721"/>
+      <Zone bkCl="ffece9d8" h="1307" nm="EPUENMI" w="389" x="958" y="726"/>
       <Zone bkCl="ffece9d8" h="572" nm="Geografica" w="511" x="46" y="505"/>
       <Zone bkCl="ffece9d8" h="298" nm="module" w="224" x="643" y="206"/>
       <Zone bkCl="ffece9d8" h="268" nm="permission" w="141" x="1015" y="484"/>
@@ -1370,7 +1426,7 @@
       <Zone bkCl="ffece9d8" h="324" nm="version" w="189" x="646" y="0"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="125">
+  <RnmMgr NxRnmId="131">
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="catalog" SupCls="Schema" SupNme="public">
       <Rnm id="1" nNm="id" oNm="id_catalog_type"/>
     </RnmCh>
@@ -1527,7 +1583,7 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profile__company_branch" SupCls="Schema" SupNme="public">
       <Rnm id="60" nNm="id_user_profile" oNm="id_profile"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sale_control" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_venta" SupCls="Schema" SupNme="public">
       <Rnm id="61" nNm="id" oNm="Id"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_imc" SupCls="Schema" SupNme="public">
@@ -1653,6 +1709,7 @@
       <Rnm id="111" nNm="purchase_price" oNm=" purchase_price"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="129" nNm="control_venta" oNm="sale_control"/>
       <Rnm id="112" nNm="sale_control" oNm="customer"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="employee" SupCls="Schema" SupNme="public">
@@ -1679,7 +1736,7 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="curso_capacitacion__sede" SupCls="Schema" SupNme="public">
       <Rnm id="120" nNm="id" oNm="Id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sale_control" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_venta" SupCls="Schema" SupNme="public">
       <Rnm id="121" nNm="id_curso_capacitacion" oNm="id_curso"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="person" SupCls="Schema" SupNme="public">
@@ -1688,6 +1745,21 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="person" SupCls="Schema" SupNme="public">
       <Rnm id="124" nNm="ref_1_tlfo_fijo_cell" oNm="ref_1_tlf_fijo_cell"/>
       <Rnm id="123" nNm="ref_1_tlf_fijo_cell" oNm="ref_1_telefono_fijo_cell"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="125" nNm="alumno" oNm="alumnos"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="alumno" SupCls="Schema" SupNme="public">
+      <Rnm id="126" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="alumno" SupCls="Schema" SupNme="public">
+      <Rnm id="127" nNm="registration_date" oNm="register_date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_venta" SupCls="Schema" SupNme="public">
+      <Rnm id="128" nNm="id_alumno" oNm="id_person"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_venta" SupCls="Schema" SupNme="public">
+      <Rnm id="130" nNm="estado_date" oNm="update_date"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
@@ -1712,8 +1784,7 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (27)</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (27)/sale_control</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (28)</TreePath>
     <TreePath>/Diagrams (1)</TreePath>
   </TreePaths>
 </Db>

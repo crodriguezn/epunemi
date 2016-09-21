@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Curso_Capacitacion_Model extends MY_Model 
+class Curso_Capacitacion__Sede_model extends MY_Model 
 {
-    protected $table = 'curso_capacitacion';
+    protected $table = 'curso_capacitacion__sede';
     
     function __construct() 
     {
@@ -13,27 +13,27 @@ class Curso_Capacitacion_Model extends MY_Model
     {
         $row = parent::load($value, $by, $except_value, $except_by);
         
-        $eCursoCapacitacion = new eCursoCapacitacion();
+        $eCursoCapacitacionSede = new eCursoCapacitacionSede();
         
-        $eCursoCapacitacion->parseRow($row);
+        $eCursoCapacitacionSede->parseRow($row);
         
-        return $eCursoCapacitacion;
+        return $eCursoCapacitacionSede;
     }
     
-    function save(eCursoCapacitacion &$eCursoCapacitacion)
+    function save(eCursoCapacitacionSede &$eCursoCapacitacionSede)
     {
         try
         {
-            if (empty($eCursoCapacitacion->id)) 
+            if (empty($eCursoCapacitacionSede->id)) 
             {
-                $eCursoCapacitacion->id = $this->genId();
+                $eCursoCapacitacionSede->id = $this->genId();
                  
-                $this->insert($eCursoCapacitacion->toData());
+                $this->insert($eCursoCapacitacionSede->toData());
                 Helper_App_Log::write( $this->lastQuery(), FALSE, Helper_App_Log::LOG_INSERT );
             }
             else
             {
-                $this->update($eCursoCapacitacion->toData(TRUE), $eCursoCapacitacion->id);
+                $this->update($eCursoCapacitacionSede->toData(TRUE), $eCursoCapacitacionSede->id);
                 Helper_App_Log::write( $this->lastQuery(), FALSE, Helper_App_Log::LOG_UPDATE );
             }
         }
@@ -125,11 +125,10 @@ class Curso_Capacitacion_Model extends MY_Model
     
 }
 
-class eCursoCapacitacion extends MY_Entity
+class eCursoCapacitacionSede extends MY_Entity
 {
-    public $name;
-    public $name_kay;
-    public $isActive;
+    public $id_curso_capacitacion;
+    public $id_sede;
 
     public function __construct($useDefault = TRUE)
     {
@@ -137,14 +136,13 @@ class eCursoCapacitacion extends MY_Entity
         
         if( $useDefault )
         {
-            $this->name             = '';
-            $this->name_kay         = '';
-            $this->isActive         = '';
+            $this->id_curso_capacitacion    = 0;
+            $this->id_sede                  = 0;
         }
     }
 }
 
-class filterCursoCapacitacion extends MY_Entity_Filter
+class filterCursoCapacitacionSede extends MY_Entity_Filter
 {
     public function __construct()
     {
